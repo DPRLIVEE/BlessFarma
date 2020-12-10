@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="BlessFarma.Global" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="SWVGEAD.Global" Language="C#" %>

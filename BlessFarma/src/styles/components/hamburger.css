@@ -1,0 +1,56 @@
+.hamburger {
+    --bar-height: 3px;
+    --spacing: 3px;
+    --width: 21px;
+    --color: var(--color-mine-shaft);
+    --active-color: var(--color-brand-red);
+
+    background: none;
+    border: 0;
+    cursor: pointer;
+    height: calc((3 * var(--bar-height)) + (2 * var(--spacing)));
+    position: relative;
+    width: var(--width);
+
+    &.-active {
+        .hamburger__inner {
+            background-color: var(--active-color);
+            &:before,
+            &:after {
+                background-color: var(--active-color);
+            }
+        }
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &__inner {
+        background-color: var(--color);
+        display: block;
+        height: var(--bar-height);
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+
+        &:before,
+        &:after {
+            background-color: var(--color);
+            content: "";
+            display: block;
+            height: var(--bar-height);
+            position: absolute;
+            width: 100%;
+        }
+
+        &:before {
+            top: calc(var(--bar-height) + var(--spacing));
+        }
+
+        &:after {
+            top: calc(2 * (var(--bar-height) + var(--spacing)));
+        }
+    }
+}

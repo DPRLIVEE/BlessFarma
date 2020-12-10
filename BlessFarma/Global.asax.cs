@@ -1,21 +1,51 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Optimization;
 using System.Web.Routing;
-using System.Web.Security;
-using System.Web.SessionState;
 
-namespace BlessFarma
+namespace SWVGEAD
 {
-    public class Global : HttpApplication
+    public class Global : System.Web.HttpApplication
     {
-        void Application_Start(object sender, EventArgs e)
+        protected void Application_Start(object sender, EventArgs e)
         {
-            // Código que se ejecuta al iniciar la aplicación
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
+            RegisterRoutes(RouteTable.Routes);
+        }
+        private static void RegisterRoutes(RouteCollection routes)
+        {
+            //PAGINAS
+
+            routes.MapPageRoute("Login", "Login", "~/Paginas/Login.aspx", true);
+            routes.MapPageRoute("Principal", "Principal", "~/Paginas/Principal.aspx", true);
+
+        }
+
+        protected void Session_Start(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Application_BeginRequest(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Application_AuthenticateRequest(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Application_Error(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Session_End(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Application_End(object sender, EventArgs e)
+        {
+
         }
     }
 }

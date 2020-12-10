@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html class='use-all-space'>
+<head>
+    <meta http-equiv='X-UA-Compatible' content='IE=Edge' />
+    <meta charset='UTF-8'>
+    <title>Maps SDK for Web - GeoJSON polygon with pattern fill</title>
+    <meta name='viewport'
+          content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no'/>
+    <!--<link rel='stylesheet' type='text/css' href='../sdk/web-sdk-maps/maps.css' />-->
+    <link href="../../../../sdk/@tomtom-international/web-sdk-maps/dist/maps.css" rel="stylesheet" />
+    <!--<link rel='stylesheet' type='text/css' href='../pages/examples/styles/main.css' />-->
+    <link href="../styles/main.css" rel="stylesheet" />
+</head>
+<body>
+    <div id='map' class='map'></div>
+    <script src="../../../../sdk/@tomtom-international/web-sdk-maps/dist/maps-web.min.js"></script>
+    <!--<script data-showable type='text/javascript' src='../pages/examples/assets/js/mobile-or-tablet.js'></script>-->
+    <script src="../assets/js/mobile-or-tablet.js"></script>
+    <script>
+        var map = tt.map({
+            key: '22m7qGJF8dFCAAr8HAEzXVZ08LLW4Vnk',
+            container: 'map',
+            style: 'tomtom://vector/1/basic-main',
+            zoom: 15,
+            center: [4.952129606368089, 52.31404857051368],
+            dragPan: !window.isMobileOrTablet()
+        });
+        map.addControl(new tt.FullscreenControl());
+        map.addControl(new tt.NavigationControl());
+
+
+        map.on('load', function () {
+            map.loadImage('../pages/examples/assets/images/pattern_arrows.png', function (err, image) {
+                // Throw an error if something went wrong
+                if (err) throw err;
+
+                // Declare the image
+                map.addImage('pattern', image);
+                map.addLayer({
+                    'id': 'overlay',
+                    'type': 'fill',
+                    'source': {
+                        'type': 'geojson',
+                        'data': {
+                            'type': 'Feature',
+                            'geometry': {
+                                'type': 'Polygon',
+                                'coordinates': [[[4.9486338, 52.3139782],
+                                [4.9511976, 52.3149028],
+                                [4.9550533, 52.3162253],
+                                [4.9568229, 52.3141933],
+                                [4.9566674, 52.3140014],
+                                [4.9506185, 52.3119233],
+                                [4.9486338, 52.3139782]]]
+                            }
+                        }
+                    },
+                    'layout': {},
+                    'paint': {
+                        'fill-color': '#db356c',
+                        'fill-opacity': 0.5,
+                        "fill-pattern": "pattern"
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
