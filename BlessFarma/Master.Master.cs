@@ -6,15 +6,16 @@ using System.Web.UI;
 
 namespace BlessFarma
 {
-    public partial class Master : System.Web.UI.MasterPage
+    public partial class Master : MasterPage
     {
-        
+
+
+        protected void salir_ServerClick(object sender, EventArgs e)
+        {
+
+            Response.Redirect("Login.aspx");
+        }
+
     }
 
-
-    //protected void salir_ServerClick(object sender, EventArgs e)
-    //{
-       
-    //    Response.Redirect("Login");
-    //}
 }

@@ -65,15 +65,28 @@
                 </li>
                 <hr class="sidebar-divider my-0">
                 <li class="nav-item active">
-                    <a href='Principal' class="nav-link" runat="server"><i class='fas fa-fw fa-home'></i><span> Principal </span></a>
+                    <a href='/Paginas/Principal.aspx' class="nav-link" runat="server"><i class='fas fa-fw fa-home'></i><span> Principal </span></a>
                 </li>
                 <hr class="sidebar-divider my-0">
 
-                <asp:Literal runat="server" ID="Menu"></asp:Literal>
-                <hr class="sidebar-divider my-0 ">
                 <li class="nav-item ">
-                    <a href='index.html' class="nav-link" data-toggle="modal" data-target="#logoutModal" runat="server"><i class='fas fa-fw fa-sign-out-alt'></i><span> Salir </span></a>
+                    <a href='/Paginas/GenerarListaCompras.aspx' class="nav-link" runat="server"><i class='fas fa-fw fa-shopping-cart '></i><span> Generar Lista de Compras </span></a>
                 </li>
+
+                <li class="nav-item ">
+                    <a href='/Paginas/GestionarPedido.aspx' class="nav-link" runat="server"><i class='fas fa-fw fa-book'></i><span> Gestionar Pedido </span></a>
+                </li>
+
+                <li class="nav-item ">
+                <a href='/Paginas/ManejarMerma.aspx' class="nav-link" runat="server"><i class='fas fa-fw fa-list-alt'></i><span> Manejar Merma </span></a>
+                </li>
+                
+                <hr class="sidebar-divider my-0 ">
+
+                <li class="nav-item ">
+                <a href='index.html' class="nav-link" data-toggle="modal" data-target="#logoutModal" runat="server"><i class='fas fa-fw fa-sign-out-alt'></i><span> Salir </span></a>
+                </li>
+
                 <hr class="sidebar-divider d-none d-md-block">
                 <div class="text-center d-none d-md-inline">
                     <button type="button" class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -252,7 +265,7 @@
                     <div class="modal-body">Seleccione "Salir" si desea terminar su sesión</div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                        <button class="btn btn-primary" style="cursor:pointer" runat="server">Salir</button>
+                        <button class="btn btn-primary" style="cursor:pointer" onserverclick="salir_ServerClick" runat="server">Salir</button>
                     </div>
                 </div>
             </div>

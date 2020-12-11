@@ -1837,7 +1837,6 @@
     <Content Include="bootstrap\js\bootstrap.bundle.min.js.map" />
     <Content Include="bootstrap\js\bootstrap.js.map" />
     <Content Include="bootstrap\js\bootstrap.min.js.map" />
-    <Content Include="Global.asax" />
     <Content Include="imagenes\BlessFarmalogo.png" />
     <Content Include="imagenes\log.svg" />
     <Content Include="imagenes\register.svg" />
@@ -1930,7 +1929,10 @@
     <Content Include="fontawesome\webfonts\fa-solid-900.ttf" />
     <Content Include="fontawesome\webfonts\fa-solid-900.woff" />
     <Content Include="fontawesome\webfonts\fa-solid-900.woff2" />
+    <Content Include="Paginas\GenerarListaCompras.aspx" />
+    <Content Include="Paginas\GestionarPedido.aspx" />
     <Content Include="Paginas\Login.aspx" />
+    <Content Include="Paginas\ManejarMerma.aspx" />
     <Content Include="Paginas\Principal.aspx" />
     <Content Include="Scripts\i18n\af.js" />
     <Content Include="Scripts\i18n\ar.js" />
@@ -2225,9 +2227,6 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
     <Compile Include="Master.Master.cs">
       <DependentUpon>Master.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2235,12 +2234,33 @@
     <Compile Include="Master.Master.designer.cs">
       <DependentUpon>Master.Master</DependentUpon>
     </Compile>
+    <Compile Include="Paginas\GenerarListaCompras.aspx.cs">
+      <DependentUpon>GenerarListaCompras.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\GenerarListaCompras.aspx.designer.cs">
+      <DependentUpon>GenerarListaCompras.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\GestionarPedido.aspx.cs">
+      <DependentUpon>GestionarPedido.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\GestionarPedido.aspx.designer.cs">
+      <DependentUpon>GestionarPedido.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Paginas\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Paginas\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\ManejarMerma.aspx.cs">
+      <DependentUpon>ManejarMerma.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\ManejarMerma.aspx.designer.cs">
+      <DependentUpon>ManejarMerma.aspx</DependentUpon>
     </Compile>
     <Compile Include="Paginas\Principal.aspx.cs">
       <DependentUpon>Principal.aspx</DependentUpon>

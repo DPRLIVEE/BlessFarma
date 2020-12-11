@@ -23,7 +23,7 @@
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
-          <form action="#" class="sign-in-form">
+          <form runat="server" action="#" class="sign-in-form">
             <h2 class="title">Login</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
@@ -33,7 +33,7 @@
               <i class="fas fa-lock"></i>
               <input type="password" placeholder="Contraseña" />
             </div>
-            <input type="submit" runat="server" value="Login" class="btn solid" onserverclick="btnLogin_Click" />
+            <button runat="server" class="btn solid" onserverclick="btnLogin_Click"> Login</button>
             <p class="social-text">Copyright &copy; BlessFarma 2020</p>
             
           </form>
