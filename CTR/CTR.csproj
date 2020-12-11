@@ -42,8 +42,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
-    <Compile Include="Pedido.cs" />
+    <Compile Include="CTR_ListaCompra.cs" />
+    <Compile Include="CTR_Pedido.cs" />
+    <Compile Include="CTR_ProductoListCompra.cs" />
+    <Compile Include="CTR_Proveedor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DAO\DAO.csproj">
+      <Project>{bca92eec-ec66-4ffe-a0eb-f6130cce8dce}</Project>
+      <Name>DAO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{a16d4078-5687-41dc-8dee-63b62899a825}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
