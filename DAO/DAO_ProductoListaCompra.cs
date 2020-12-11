@@ -9,7 +9,7 @@ using DTO;
 
 namespace DAO
 {
-    class DAO_ProductoListaCompra
+    public class DAO_ProductoListaCompra
     {
         SqlConnection conexion;
 
@@ -20,7 +20,23 @@ namespace DAO
             conexion = new SqlConnection(ConexionBD.CadenaConexion);
         }
 
-        public DataSet InsertPedido(DTO_ProductoListaCompra objProductoLC)
+        public DataTable SelectProductoLC(DTO_ProductoListaCompra objProductoLC)
+        {
+            conexion.Open();
+            SqlCommand cmd = new SqlCommand("SP_Select_ProductoLC", conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@idListaCompra", objProductoLC.idListaCompra);
+            cmd.ExecuteNonQuery();
+            cmd.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            conexion.Close();
+            return dt;
+
+        }
+
+        public DataSet SelectProducto(DTO_ProductoListaCompra objProductoLC)
         {
             conexion.Open();
             SqlCommand cmd = new SqlCommand("SP_Select_ProductoLC", conexion);
@@ -31,7 +47,7 @@ namespace DAO
             da.Fill(dt);
             conexion.Close();
             return dt;
-            
+
         }
     }
 }

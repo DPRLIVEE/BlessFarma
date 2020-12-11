@@ -9,7 +9,7 @@ using DTO;
 
 namespace DAO
 {
-    class DAO_Proveedor
+    public class DAO_Proveedor
     {
         SqlConnection conexion;
         public DAO_Proveedor()
@@ -17,7 +17,7 @@ namespace DAO
             conexion = new SqlConnection(ConexionBD.CadenaConexion);
         }
 
-        public DataSet SelectProveedor(DTO_Proveedor objProveedor)
+        public DataSet SelectProveedor()
         {
             conexion.Open();
             SqlCommand cmd = new SqlCommand("SP_Select_Proveedor", conexion);

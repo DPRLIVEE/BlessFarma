@@ -8,13 +8,45 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <h1>Agregar Pedido </h1>
-        <br />
-        <h2> Detalle del Pedido </h2>
-
-        <br />
-        <h2> Detalle del Producto </h2>
+       <h1>Gestionar Pedido</h1>
         <div>
+            <asp:Button ID="btnNuevoPedido" runat="server" Text="Nuevo Pedido" OnClick="btnNuevoPedido_Click" />
+        </div>
+        <br />
+        <div>
+            <asp:GridView ID="gvPedidos" runat="server" DataKeyNames="idPedido,Estado,razonSocial,FechaEmision,FechaEntrega,idListaCompra" AutoGenerateColumns="False" OnRowCommand="gvPedidos_RowCommand" OnRowDataBound="gvPedidos_RowDataBound">
+                <Columns>
+                    <asp:BoundField HeaderText="N° Pedido" DataField="idPedido"/>
+                    <asp:BoundField HeaderText="Estado" DataField="Estado"/>  
+                    <asp:BoundField HeaderText="Proveedor" DataField="razonSocial"/>
+                    <asp:BoundField HeaderText="Fecha Emsion" DataField="FechaEmision"/>
+                    <asp:BoundField HeaderText="Fecha Entrega" DataField="FechaEntrega"/>
+                    <asp:BoundField HeaderText="N° Lista Compra" DataField="idListaCompra"/>
+                    <asp:TemplateField HeaderText="Ver">
+                        <ItemTemplate>
+                            <asp:Button ID="btnVer" runat="server" Text="Ver" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Editar">
+                        <ItemTemplate>
+                            <asp:Button ID="btnEditar" runat="server" Text="Editar" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Anular">
+                        <ItemTemplate>
+                            <asp:Button ID="btnAnular" runat="server" Text="Anular" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Acciones">
+                        <ItemTemplate>
+                            <asp:Button ID="btnEnviar" runat="server" CommandName="EnviarP" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Height="22px" Text="Enviado" Width="57px" />
+                            <asp:Button ID="btnAceptar" runat="server" CommandName="AceptarP" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Height="24px" Text="Aceptar" Width="53px" />
+                            <asp:Button ID="btnRechazar" runat="server" CommandName="RechazarP" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Height="22px" Text="Rechazar" Width="57px" />
+                            <asp:Button ID="btnEntregado" runat="server" CommandName="EntregadoP" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Height="20px" Text="Entregado" Width="58px" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
         </div>
     </form>
 </body>

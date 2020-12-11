@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="ConexionBD.cs" />
+    <Compile Include="DAO_ListaCompra.cs" />
     <Compile Include="DAO_Pedido.cs" />
     <Compile Include="DAO_ProductoListaCompra.cs" />
     <Compile Include="DAO_Proveedor.cs" />
