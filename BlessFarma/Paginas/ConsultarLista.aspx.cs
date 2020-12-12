@@ -7,26 +7,25 @@ using System.Web.UI.WebControls;
 
 namespace BlessFarma.Paginas
 {
-    public partial class GenerarListaCompras : System.Web.UI.Page
+    public partial class ConsultarLista : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
-
         protected void gvCategoria_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            
+
         }
 
         protected void gvCategoria_RowEditing(object sender, GridViewEditEventArgs e)
         {
-          
+
         }
 
         protected void gvCategoria_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
-            
+
         }
 
         protected void gvCategoria_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -36,7 +35,7 @@ namespace BlessFarma.Paginas
 
         protected void gvCategoria_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            
+
         }
 
         protected void gvCategoria_RowUpdating(object sender, GridViewUpdateEventArgs e)
@@ -46,7 +45,7 @@ namespace BlessFarma.Paginas
 
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         public void SelectCategorias()
@@ -55,19 +54,19 @@ namespace BlessFarma.Paginas
 
         private void InsertCategoria(GridView grid)
         {
-            
+
         }
 
         private void UpdateCategoria(GridView grid)
         {
-            
+
 
         }
 
-        protected void btnAgregarLista_Click(object sender, EventArgs e)
+        protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            
-            Response.Redirect("AgregarLista.aspx");
+
+            Response.Redirect("GenerarListaCompras.aspx");
 
         }
     }

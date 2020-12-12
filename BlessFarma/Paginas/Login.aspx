@@ -27,11 +27,11 @@
             <h2 class="title">Login</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Usuario" />
+              <asp:TextBox ID="txtUsuario" runat ="server" type="text" placeholder="Usuario" />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Contraseña" />
+              <asp:TextBox ID="txtContraseña" type="email" runat ="server" TextMode="Password" placeholder="Contraseña" />
             </div>
             <button runat="server" class="btn solid" onserverclick="btnLogin_Click"> Login</button>
             <p class="social-text">Copyright &copy; BlessFarma 2020</p>

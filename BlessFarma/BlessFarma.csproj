@@ -1929,6 +1929,8 @@
     <Content Include="fontawesome\webfonts\fa-solid-900.ttf" />
     <Content Include="fontawesome\webfonts\fa-solid-900.woff" />
     <Content Include="fontawesome\webfonts\fa-solid-900.woff2" />
+    <Content Include="Paginas\AgregarLista.aspx" />
+    <Content Include="Paginas\ConsultarLista.aspx" />
     <Content Include="Paginas\GenerarListaCompras.aspx" />
     <Content Include="Paginas\GestionarPedido.aspx" />
     <Content Include="Paginas\Login.aspx" />
@@ -2233,6 +2235,20 @@
     </Compile>
     <Compile Include="Master.Master.designer.cs">
       <DependentUpon>Master.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\AgregarLista.aspx.cs">
+      <DependentUpon>AgregarLista.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\AgregarLista.aspx.designer.cs">
+      <DependentUpon>AgregarLista.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\ConsultarLista.aspx.cs">
+      <DependentUpon>ConsultarLista.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\ConsultarLista.aspx.designer.cs">
+      <DependentUpon>ConsultarLista.aspx</DependentUpon>
     </Compile>
     <Compile Include="Paginas\GenerarListaCompras.aspx.cs">
       <DependentUpon>GenerarListaCompras.aspx</DependentUpon>
