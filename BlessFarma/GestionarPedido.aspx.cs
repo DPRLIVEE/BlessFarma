@@ -13,6 +13,8 @@ namespace BlessFarma
     public partial class GestionarPedido : System.Web.UI.Page
     {
         string estado="";
+        int idEstado = 0;
+        int idPedido = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -28,6 +30,7 @@ namespace BlessFarma
             dt = objPedido.SelectPedido();
             dt.Columns.Add("Estado", typeof(string));
             AsignarEstado(dt);
+            Session.Add("dt",dt);
             gvPedidos.DataSource = dt;
             gvPedidos.DataBind();
         }
@@ -57,31 +60,45 @@ namespace BlessFarma
             {
 
                 string state = e.Row.Cells[1].Text;
+
+                if(state=="Creado")
+                {
+                    e.Row.Cells[9].FindControl("btnRechazar").Visible = false;
+                    e.Row.Cells[9].FindControl("btnAceptar").Visible = false;
+                    e.Row.Cells[9].FindControl("btnEntregado").Visible = false;
+                }
+
                 if (state == "En Espera")
                 {
                     //Actualizar
                     e.Row.Cells[8].Controls.Clear();
                     //Eliminar
                     e.Row.Cells[7].Controls.Clear();
+                    e.Row.Cells[9].FindControl("btnEnviar").Visible = false;
+                    e.Row.Cells[9].FindControl("btnEntregado").Visible = false;
 
                 }
                 if (state == "Aceptado")
                 {
-                    //Enviar
-                    e.Row.Cells[7].Controls.Clear();
+                    
+                    e.Row.Cells[9].FindControl("btnEnviar").Visible = false;
+                    e.Row.Cells[9].FindControl("btnRechazar").Visible = false;
+                    e.Row.Cells[9].FindControl("btnAceptar").Visible = false;
+
                     //Eliminar
                     e.Row.Cells[7].Controls.Clear();
                     //Actualizar
                     e.Row.Cells[8].Controls.Clear();
-                    //Registrar Movimiento 
-
+                 
                 }
                 if (state == "Rechazado")
                 {
-                    //Enviar
-                    //e.Row.Cells[7].Controls.Clear();
-                    //Actualizar
+                    e.Row.Cells[7].Controls.Clear();
                     e.Row.Cells[8].Controls.Clear();
+                    e.Row.Cells[9].FindControl("btnEnviar").Visible = false;
+                    e.Row.Cells[9].FindControl("btnRechazar").Visible = false;
+                    e.Row.Cells[9].FindControl("btnAceptar").Visible = false;
+                    e.Row.Cells[9].FindControl("btnEntregado").Visible = false;
                 }
 
             }
@@ -91,6 +108,32 @@ namespace BlessFarma
         protected void gvPedidos_RowCommand(object sender, GridViewCommandEventArgs e)
         {
 
+            if (e.CommandName == "EnviarP")
+            {
+                idPedido = Convert.ToInt32(gvPedidos.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["idPedido"].ToString());
+                idEstado= 2;  
+            }
+            if (e.CommandName == "AceptarP")
+            {
+                 idPedido = Convert.ToInt32(gvPedidos.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["idPedido"].ToString());
+                 idEstado = 3;
+
+            }
+            if (e.CommandName == "RechazarP")
+            {
+                idPedido = Convert.ToInt32(gvPedidos.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["idPedido"].ToString());
+                idEstado = 4;
+              
+            }
+            if (e.CommandName == "EntregadoP")
+            {
+                 idPedido = Convert.ToInt32(gvPedidos.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["idPedido"].ToString());
+                 idEstado = 4;
+     
+            }
+            CTR_Pedido CTRPedido = new CTR_Pedido();
+            CTRPedido.UpdatePedido(idEstado, idPedido);
+            ListarPedido();
         }
     }
 }

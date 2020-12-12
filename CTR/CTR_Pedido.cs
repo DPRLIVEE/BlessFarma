@@ -28,5 +28,9 @@ namespace CTR
         {
             return DAOPedido.SelectPedido();
         }
+        public void UpdatePedido(int idE, int idPe)
+        {
+             DAOPedido.UpdatePedido(idE, idPe);       
+        }
     }
 }

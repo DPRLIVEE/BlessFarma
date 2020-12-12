@@ -12,6 +12,7 @@ namespace BlessFarma
 {
     public partial class AgregarPedido : System.Web.UI.Page
     {
+        DTO_ProductoListaCompra objProductoLC;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -19,6 +20,9 @@ namespace BlessFarma
                 txtEstado.Text = "Creado";
                 txtFechaE.Text = DateTime.Now.Date.ToShortDateString();
                 llenarDDLProveedor();
+                objProductoLC = new DTO_ProductoListaCompra();
+               objProductoLC.idListaCompra = (int)Session["idListaC"];
+                llenarDDLProducto(objProductoLC);
 
             }
         }
@@ -49,6 +53,31 @@ namespace BlessFarma
 
         }
 
-      
+        protected void btnAgregarPedido_Click(object sender, EventArgs e)
+        {
+            DTO_Pedido DTOPedido = new DTO_Pedido();
+            DTOPedido.FechaEmision = Convert.ToDateTime(DateTime.Now.Date.ToShortDateString());
+            DTOPedido.FechaEntrega = Calendar1.SelectedDate;
+            DTOPedido.modoPago = ddlMedioPago.SelectedValue;
+            DTOPedido.idProveedor = int.Parse(ddlProveedor.SelectedValue);
+            DTOPedido.idListaCompra = objProductoLC.idListaCompra;
+            //DTOPedido.idListaCompra = 1;
+            CTR_Pedido objPedido = new CTR_Pedido();
+            objPedido.InsertPedido( DTOPedido);
+        }
+        protected void ddlProveedor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ddlProducto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtCantidad.Text = "";
+        }
+
+        protected void ddlMedioPago_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

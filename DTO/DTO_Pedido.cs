@@ -9,9 +9,9 @@ using System.Threading.Tasks;
     public class DTO_Pedido
     {
         public int idPedido { get; set; }
-        public int modoPago { get; set; }
-        public int FechaEmision { get; set; }
-        public int FechaEntrega { get; set; }
+        public string modoPago { get; set; }
+        public DateTime FechaEmision { get; set; }
+        public DateTime FechaEntrega { get; set; }
         public int idProveedor { get; set; }
         public int idListaCompra { get; set; }
 
