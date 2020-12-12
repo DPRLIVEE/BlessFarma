@@ -20,5 +20,10 @@ namespace CTR
         {
             return objListaC.SelectListaCompra();
         }
+
+        public void insertar()
+        {
+           objListaC.Insertar();
+        }
     }
 }

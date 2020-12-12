@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using CTR;
 
 namespace BlessFarma.Paginas
 {
@@ -11,7 +13,7 @@ namespace BlessFarma.Paginas
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            SelectCategorias();
         }
 
         protected void gvCategoria_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -51,6 +53,18 @@ namespace BlessFarma.Paginas
 
         public void SelectCategorias()
         {
+            try
+            {
+                CTR_ListaCompra obj = new CTR_ListaCompra();
+                DataTable data = obj.SelectListaCompra();
+
+                gvCategoria.DataSource = data;
+                gvCategoria.DataBind();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         private void InsertCategoria(GridView grid)
@@ -66,6 +80,8 @@ namespace BlessFarma.Paginas
 
         protected void btnAgregarLista_Click(object sender, EventArgs e)
         {
+            CTR_ListaCompra obj = new CTR_ListaCompra();
+            obj.insertar();
             
             Response.Redirect("AgregarLista.aspx");
 

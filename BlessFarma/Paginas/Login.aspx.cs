@@ -4,18 +4,21 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using CTR;
 
 namespace BlessFarma.Paginas
 {
     public partial class Login : System.Web.UI.Page
     {
+        string email;
+        string contrasena;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack) {
 
-                if (Session["1"] != null)
+                if (Session["estaRegistrado"] != null)
                 {
-                    Response.Redirect("Principal");
+                    Response.Redirect("Principal.aspx");
                 }
                 else
                 {
@@ -30,38 +33,23 @@ namespace BlessFarma.Paginas
 
             try
             {
-                DtoUsuario dtoU = new DtoUsuario
+                email = txtUsuario.Text;
+                contrasena = txtContraseña.Text;
+                CTR_Ususario obj = new CTR_Ususario();
+                int respuesta = obj.login(email, contrasena);
+                if (respuesta == 0)
                 {
-                    Usuario = txtUsuario.Text,
-                    Password = txtContraseña.Text
-                };
-                dtoU = new CtrUsuario().Usp_Login(dtoU);
-                if (!dtoU.HuboError)
-                {
-                   
-                    if (perfiles.Count == 1)
-                    {
-                        dtoU.Rol = perfiles[0].IdRol;
-                        dtoU.NomRol = perfiles[0].NomRol;
-                        Session["Usuario"] = dtoU;
-                        Response.Redirect("Principal.aspx");
-                    }
-                    else
-                    {
-                        repeater.DataSource = perfiles;
-                        repeater.DataBind();
-                        Session["Usuario"] = dtoU;
-                        ScriptManager.RegisterStartupScript(this, GetType(), "Pop", "$('#myModal').modal('show');", true);
-                    }
+                    ScriptManager.RegisterClientScriptBlock(Page, typeof(Page), "ClientScript", "alert('Contraseña incorrecta')", true);
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "Pop", @"swal('Error!', '" + dtoU.ErrorMsj + "', 'error');", true);
+                    Session["estaRegistrado"] = respuesta;
+                    Response.Redirect("Principal.aspx");
                 }
             }
             catch (Exception ex)
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "Pop", @"swal('Error!', '" + ex.Message + "', 'error');", true);
+               
             }
 
         }

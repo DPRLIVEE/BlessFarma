@@ -55,10 +55,10 @@
                                     <asp:TemplateField Visible="false">
                                         <HeaderTemplate>Codigo</HeaderTemplate>
                                         <ItemTemplate>
-                                            <asp:Label ID="lblCat" runat="server" Text='<% #Bind("IdCategoria") %>' />
+                                            <asp:Label ID="lblCat" runat="server" Text='<% #Bind("idListaCompra") %>' />
                                         </ItemTemplate>
                                         <EditItemTemplate>
-                                            <asp:Label ID="lblCategoriaEdit" runat="server" Text='<% #Bind("IdCategoria") %>' />
+                                            <asp:Label ID="lblCategoriaEdit" runat="server" Text='<% #Bind("estado") %>' />
                                         </EditItemTemplate>
                                     </asp:TemplateField>
 
@@ -68,7 +68,7 @@
                                         </ItemTemplate>
                                     </asp:TemplateField>
 
-                                    <asp:TemplateField>
+                                    <%--<asp:TemplateField>
                                         <HeaderTemplate>Nombre del Producto</HeaderTemplate>
                                         <ItemTemplate>
                                             <asp:Label ID="lblCategoria" runat="server" Text='<%#Bind("Categoria")%>' />
@@ -89,7 +89,7 @@
                                         </EditItemTemplate>
                                         
 
-                                    </asp:TemplateField>
+                                    </asp:TemplateField>--%>
 
                                    
                                

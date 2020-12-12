@@ -49,7 +49,7 @@
                         <asp:Panel ID="Panel1" runat="server" CssClass="auto-style1">
                             <asp:GridView ID="gvCategoria" runat="server" AutoGenerateColumns="False" Font-Size="Small" GridLines="None" HeaderStyle-HorizontalAlign="Center" RowStyle-HorizontalAlign="Center"
                                 AllowPaging="True" CssClass="table table-thead-style" PagerStyle-CssClass="pgr" AlternatingRowStyle-CssClass="alt"
-                                DataKeyNames="IdCategoria" EmptyDataText="No se encontro ninguna categoria." PageSize="15"
+                                DataKeyNames="idListaCompra" EmptyDataText="No se encontro ninguna categoria." PageSize="15"
                                 OnRowCommand="gvCategoria_RowCommand"
                                 OnRowEditing="gvCategoria_RowEditing"
                                 OnRowCancelingEdit="gvCategoria_RowCancelingEdit"
@@ -59,7 +59,7 @@
                                 ShowFooter="true">
                                 <Columns>
 
-                                    <asp:TemplateField Visible="false">
+                                    <%--<asp:TemplateField Visible="false">
                                         <HeaderTemplate>Codigo</HeaderTemplate>
                                         <ItemTemplate>
                                             <asp:Label ID="lblCat" runat="server" Text='<% #Bind("IdCategoria") %>' />
@@ -67,64 +67,25 @@
                                         <EditItemTemplate>
                                             <asp:Label ID="lblCategoriaEdit" runat="server" Text='<% #Bind("IdCategoria") %>' />
                                         </EditItemTemplate>
-                                    </asp:TemplateField>
+                                    </asp:TemplateField>--%>
 
-                                    <asp:TemplateField Visible="false" HeaderText="Nro. Fila">
-                                        <ItemTemplate>
-                                            <%# Container.DataItemIndex + 1%>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
+
 
                                     <asp:TemplateField>
-                                        <HeaderTemplate>Codigo</HeaderTemplate>
+                                        <HeaderTemplate>Id</HeaderTemplate>
                                         <ItemTemplate>
-                                            <asp:Label ID="lblCategoria" runat="server" Text='<%#Bind("Categoria")%>' />
+                                            <asp:Label ID="lblCategoria" runat="server" Text='<%#Bind("idListaCompra")%>' />
                                         </ItemTemplate>
-                                        <EditItemTemplate>
-                                            <asp:TextBox runat="server" CssClass="form-control" OnKeyPress="return LetrasInt(event)" ID="txtCategoriaEdit" MaxLength="20" Text='<% #Bind("Categoria") %>' />
-                                        </EditItemTemplate>
-                                        <FooterTemplate>
-                                            <asp:TextBox runat="server" CssClass="form-control" OnKeyPress="return LetrasInt(event)" ID="txtCategoriaAdd" MaxLength="20" Text='<% #Bind("Categoria") %>' />
-                                        </FooterTemplate>
-                                    </asp:TemplateField>
-
-                                    <asp:TemplateField>
-                                        <HeaderTemplate>Quimico Farmaceutico</HeaderTemplate>
-                                        <ItemTemplate>
-                                            <asp:Label ID="lblCategoria" runat="server" Text='<%#Bind("Categoria")%>' />
-                                        </ItemTemplate>
-                                        <EditItemTemplate>
-                                            <asp:TextBox runat="server" CssClass="form-control" OnKeyPress="return LetrasInt(event)" ID="txtCategoriaEdit" MaxLength="20" Text='<% #Bind("Categoria") %>' />
-                                        </EditItemTemplate>
-                                        <FooterTemplate>
-                                            <asp:TextBox runat="server" CssClass="form-control" OnKeyPress="return LetrasInt(event)" ID="txtCategoriaAdd" MaxLength="20" Text='<% #Bind("Categoria") %>' />
-                                        </FooterTemplate>
-                                    </asp:TemplateField>
-
-                                    <asp:TemplateField>
-                                        <HeaderTemplate>Fecha de Registro</HeaderTemplate>
-                                        <ItemTemplate>
-                                            <asp:Label ID="lblCategoria" runat="server" Text='<%#Bind("Categoria")%>' />
-                                        </ItemTemplate>
-                                        <EditItemTemplate>
-                                            <asp:TextBox runat="server" CssClass="form-control" OnKeyPress="return LetrasInt(event)" ID="txtCategoriaEdit" MaxLength="20" Text='<% #Bind("Categoria") %>' />
-                                        </EditItemTemplate>
-                                        <FooterTemplate>
-                                            <asp:TextBox runat="server" CssClass="form-control" OnKeyPress="return LetrasInt(event)" ID="txtCategoriaAdd" MaxLength="20" Text='<% #Bind("Categoria") %>' />
-                                        </FooterTemplate>
                                     </asp:TemplateField>
 
                                     <asp:TemplateField>
                                         <HeaderTemplate>Estado</HeaderTemplate>
                                         <ItemTemplate>
-                                            <asp:Label ID="lblCategoria" runat="server" Text='<%#Bind("Categoria")%>' />
+                                            <asp:Label ID="lblCategoria" runat="server" Text='<%#Bind("estado")%>' />
                                         </ItemTemplate>
                                         <EditItemTemplate>
-                                            <asp:TextBox runat="server" CssClass="form-control" OnKeyPress="return LetrasInt(event)" ID="txtCategoriaEdit" MaxLength="20" Text='<% #Bind("Categoria") %>' />
+                                            <asp:TextBox runat="server" CssClass="form-control" OnKeyPress="return LetrasInt(event)" ID="txtCategoriaEdit" MaxLength="20" Text='<% #Bind("estado") %>' />
                                         </EditItemTemplate>
-                                        <FooterTemplate>
-                                            <asp:TextBox runat="server" CssClass="form-control" OnKeyPress="return LetrasInt(event)" ID="txtCategoriaAdd" MaxLength="20" Text='<% #Bind("Categoria") %>' />
-                                        </FooterTemplate>
                                     </asp:TemplateField>
 
                                     <asp:TemplateField>
@@ -140,7 +101,7 @@
                                         <HeaderTemplate>Editar</HeaderTemplate>
                                         <ItemTemplate>
                                             <asp:LinkButton Text="text" ID="lnkEdit" runat="server" ToolTip="Editar" CommandName="Edit" CommandArgument='<%# Container.DataItemIndex %>'>
-                                                            <i class="fas fa-pencil-square-o fa-1x"></i>
+                                                            <i class="fas fa-edit fa-1x"></i>
                                             </asp:LinkButton>
                                         </ItemTemplate>
                                     </asp:TemplateField>
@@ -149,7 +110,7 @@
                                         <HeaderTemplate>Anular</HeaderTemplate>
                                         <ItemTemplate>
                                             <asp:LinkButton Text="text" ID="lnkEdit" runat="server" ToolTip="Editar" CommandName="Edit" CommandArgument='<%# Container.DataItemIndex %>'>
-                                                            <i class="fas fa-trash-o fa-1x"></i>
+                                                            <i class="fas fa-trash fa-1x"></i>
                                             </asp:LinkButton>
                                         </ItemTemplate>
                                     </asp:TemplateField>

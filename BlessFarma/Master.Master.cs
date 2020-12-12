@@ -12,7 +12,7 @@ namespace BlessFarma
 
         protected void salir_ServerClick(object sender, EventArgs e)
         {
-
+            Session["estaRegistrado"] = null;
             Response.Redirect("Login.aspx");
         }
 

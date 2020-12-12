@@ -19,7 +19,7 @@ namespace DAO
         public DataTable SelectListaCompra()
         {
             conexion.Open();
-            SqlCommand comando = new SqlCommand("SP_Select_ListaCompra", conexion);
+            SqlCommand comando = new SqlCommand("SP_listar_Listacompra", conexion);
             comando.CommandType = CommandType.StoredProcedure;
             comando.ExecuteNonQuery();
             DataTable dt = new DataTable();
@@ -28,6 +28,15 @@ namespace DAO
             conexion.Close();
             return dt;
 
+        }
+
+        public void Insertar()
+        {
+            conexion.Open();
+            SqlCommand cmd = new SqlCommand("sp_crearListaCompra", conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.ExecuteNonQuery();
+            conexion.Close();
         }
     }
 }
