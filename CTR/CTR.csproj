@@ -46,6 +46,7 @@
     <Compile Include="CTR_Pedido.cs" />
     <Compile Include="CTR_ProductoListCompra.cs" />
     <Compile Include="CTR_Proveedor.cs" />
+    <Compile Include="CTR_Ususario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
