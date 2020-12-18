@@ -14,7 +14,11 @@ namespace BlessFarma
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            llenarGVListaC();
+            if (!IsPostBack)
+            {
+                llenarGVListaC();
+            }
+            
         }
         public void llenarGVListaC()
         {

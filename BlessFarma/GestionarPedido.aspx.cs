@@ -128,7 +128,7 @@ namespace BlessFarma
             if (e.CommandName == "EntregadoP")
             {
                  idPedido = Convert.ToInt32(gvPedidos.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["idPedido"].ToString());
-                 idEstado = 4;
+                 idEstado = 5;
      
             }
             CTR_Pedido CTRPedido = new CTR_Pedido();

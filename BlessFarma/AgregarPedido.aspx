@@ -45,7 +45,18 @@
             <asp:Label ID="Label3" runat="server" Text="Cantidad:"></asp:Label>
             <asp:TextBox ID="txtCantidad" runat="server"></asp:TextBox>
             <br />
+            <div>
+
+                <asp:Button ID="btnAñadirProducto" runat="server" Text="Añadir Producto" OnClick="btnAñadirProducto_Click" />
+            </div>
+             <div>
+                <asp:GridView ID="GridView1" runat="server" ></asp:GridView>
+            </div>
   
+            <div style="text-align:center" >
+                <asp:Button ID="btnAgregarP" runat="server" Text="Guardar" OnClick="btnAgregarP_Click" />
+            </div>
+           
         </div>
     </form>
 </body>

@@ -14,6 +14,7 @@ using System.Threading.Tasks;
         public DateTime FechaEntrega { get; set; }
         public int idProveedor { get; set; }
         public int idListaCompra { get; set; }
+        public int Estado { get; set; }
 
     }
 }

@@ -3,14 +3,7 @@
 <!DOCTYPE html>
 
 <html>
-<head runat="server">
-    <title>Lista Compra</title>
-    <style type="text/css">
-        .auto-style1 {
-            text-align: center;
-        }
-    </style>
-</head>
+
 <body>
     <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
