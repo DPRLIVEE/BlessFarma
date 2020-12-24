@@ -24,7 +24,7 @@
                     <asp:BoundField HeaderText="N° Lista Compra" DataField="idListaCompra"/>
                     <asp:TemplateField HeaderText="Ver">
                         <ItemTemplate>
-                            <asp:Button ID="btnVer" runat="server" Text="Ver" />
+                            <asp:Button ID="btnVer" runat="server" Text="Ver"  CommandName="VerP" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"  />
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Editar">

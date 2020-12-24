@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Web.UI.WebControls;
 using CTR;
+using DTO;
 
 namespace BlessFarma
 {
@@ -48,7 +49,7 @@ namespace BlessFarma
                 if (s == 2) estado = "En Espera";
                 if (s == 3) estado = "Aceptado";
                 if (s == 4) estado = "Rechazado";
-                if (s == 5) estado = "Entregado";
+                if (s == 5) estado = "Entregado Total";
                 dt.Rows[i]["Estado"] = estado;
 
             }                                                 
@@ -131,9 +132,34 @@ namespace BlessFarma
                  idEstado = 5;
      
             }
+            if (e.CommandName == "EntregadoP")
+            {
+                idPedido = Convert.ToInt32(gvPedidos.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["idPedido"].ToString());
+                idEstado = 5;
+
+            }
+            if (e.CommandName == "VerP")
+            {
+                DTO_Pedido objPedido = new DTO_Pedido();
+                
+                objPedido.FechaEntrega = Convert.ToDateTime(gvPedidos.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["idPedido"].ToString());
+                idPedido = Convert.ToInt32(gvPedidos.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["idPedido"].ToString());
+                idPedido = Convert.ToInt32(gvPedidos.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["idPedido"].ToString());
+                idPedido = Convert.ToInt32(gvPedidos.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["idPedido"].ToString());
+                idPedido = Convert.ToInt32(gvPedidos.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["idPedido"].ToString());
+
+
+
+            }
+
             CTR_Pedido CTRPedido = new CTR_Pedido();
             CTRPedido.UpdatePedido(idEstado, idPedido);
             ListarPedido();
+        }
+
+        protected void btnVer_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

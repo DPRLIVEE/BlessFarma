@@ -42,7 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="DTO_DetallePedido.cs" />
     <Compile Include="DTO_Pedido.cs" />
+    <Compile Include="DTO_Producto.cs" />
     <Compile Include="DTO_ProductoListaCompra.cs" />
     <Compile Include="DTO_Proveedor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

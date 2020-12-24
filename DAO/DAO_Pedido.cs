@@ -28,7 +28,8 @@ namespace DAO
             cmd.Parameters.AddWithValue("@FechaEmision", objPedido.FechaEmision);
             cmd.Parameters.AddWithValue("@FechaEntrega", objPedido.FechaEntrega);
             cmd.Parameters.AddWithValue("@idProveedor", objPedido.idProveedor);
-            cmd.Parameters.AddWithValue("@idListaCompra", objPedido.idListaCompra);          
+            cmd.Parameters.AddWithValue("@idListaCompra", objPedido.idListaCompra);
+            cmd.Parameters.AddWithValue("@estadoP", objPedido.Estado);
             cmd.ExecuteNonQuery();
             conexion.Close();
         }

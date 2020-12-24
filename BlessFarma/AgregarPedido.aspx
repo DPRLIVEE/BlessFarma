@@ -28,8 +28,7 @@
             <asp:ListItem Text="Efectivo" Value="Efectivo">Efectivo</asp:ListItem>
             <asp:ListItem Text="Crédito" Value="Crédito">Crédito</asp:ListItem>
             </asp:DropDownList>
-
-            <br />
+           <br />
             Proveedor:<asp:DropDownList ID="ddlProveedor" AutoPostBack="true" runat="server" OnSelectedIndexChanged="ddlProveedor_SelectedIndexChanged">
             </asp:DropDownList>
             
@@ -44,17 +43,22 @@
             </div>
             <asp:Label ID="Label3" runat="server" Text="Cantidad:"></asp:Label>
             <asp:TextBox ID="txtCantidad" runat="server"></asp:TextBox>
-            <br />
+            
             <div>
-
+<br />
                 <asp:Button ID="btnAñadirProducto" runat="server" Text="Añadir Producto" OnClick="btnAñadirProducto_Click" />
             </div>
+            <br />
              <div>
                 <asp:GridView ID="GridView1" runat="server" ></asp:GridView>
             </div>
   
             <div style="text-align:center" >
                 <asp:Button ID="btnAgregarP" runat="server" Text="Guardar" OnClick="btnAgregarP_Click" />
+            </div>
+            <br />
+             <div style="text-align:center" >
+                <asp:Button ID="btnVolver" runat="server" Text="Volver" OnClick="btnVolver_Click" />
             </div>
            
         </div>

@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="CTR_DetallePedido.cs" />
     <Compile Include="CTR_ListaCompra.cs" />
     <Compile Include="CTR_Pedido.cs" />
     <Compile Include="CTR_ProductoListCompra.cs" />

@@ -11,9 +11,11 @@
         <div>
            <%-- <asp:UpdatePanel ID="Panel" runat="server">
                 <ContentTemplate>--%>
-                    <asp:GridView ID="gvListaCompra" runat="server" DataKeyNames="idListaCompra,estado" AutoGenerateColumns="False" OnRowCommand="gvListaCompra_RowCommand">
+                    <asp:GridView ID="gvListaCompra" runat="server" DataKeyNames="idListaCompra,fecha,estado,nombreUsuario" AutoGenerateColumns="False" OnRowCommand="gvListaCompra_RowCommand">
                 <Columns>
                     <asp:BoundField HeaderText="N°Lista" DataField="idListaCompra"/>
+                    <asp:BoundField HeaderText="Fecha Emision" DataField="fecha"/>
+                    <asp:BoundField HeaderText="Farmaceutico" DataField="nombreUsuario"/>
                     <asp:BoundField HeaderText="Estado" DataField="estado"/>
                     <asp:TemplateField HeaderText="Seleccionar">
                         <ItemTemplate>

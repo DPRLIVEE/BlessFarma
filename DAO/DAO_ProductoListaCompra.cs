@@ -36,18 +36,18 @@ namespace DAO
 
         }
 
-        public DataSet SelectProducto(DTO_ProductoListaCompra objProductoLC)
-        {
-            conexion.Open();
-            SqlCommand cmd = new SqlCommand("SP_Select_ProductoLC", conexion);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.ExecuteNonQuery();
-            DataSet dt = new DataSet();
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            da.Fill(dt);
-            conexion.Close();
-            return dt;
+        //public DataSet SelectProducto(DTO_ProductoListaCompra objProductoLC)
+        //{
+        //    conexion.Open();
+        //    SqlCommand cmd = new SqlCommand("SP_Select_ProductoLC", conexion);
+        //    cmd.CommandType = CommandType.StoredProcedure;
+        //    cmd.ExecuteNonQuery();
+        //    DataSet dt = new DataSet();
+        //    SqlDataAdapter da = new SqlDataAdapter(cmd);
+        //    da.Fill(dt);
+        //    conexion.Close();
+        //    return dt;
 
-        }
+        //}
     }
 }
