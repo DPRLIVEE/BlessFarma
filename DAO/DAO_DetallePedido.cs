@@ -29,8 +29,8 @@ namespace DAO
             cmd.Parameters.AddWithValue("@idProducto", objDPedido.idProducto);
             cmd.Parameters.AddWithValue("@cantidad", objDPedido.cantidad);
             cmd.Parameters.AddWithValue("@idPedido", objDPedido.idPedido);
-            cmd.Parameters.AddWithValue("@PrecioTotalProducto", objDPedido.precioTotalProducto);
-            cmd.Parameters.AddWithValue("@MontoTotal", objDPedido.MontoTotal);
+            cmd.Parameters.AddWithValue("@PrecioTotal", objDPedido.precioTotal);
+            
             cmd.ExecuteNonQuery();
             conexion.Close();
         }

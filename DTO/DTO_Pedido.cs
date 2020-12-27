@@ -15,6 +15,7 @@ using System.Threading.Tasks;
         public int idProveedor { get; set; }
         public int idListaCompra { get; set; }
         public int Estado { get; set; }
+        public decimal MontoTotal { get; set; }
 
     }
 }

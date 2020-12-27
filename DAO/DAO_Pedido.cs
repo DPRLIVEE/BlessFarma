@@ -30,6 +30,7 @@ namespace DAO
             cmd.Parameters.AddWithValue("@idProveedor", objPedido.idProveedor);
             cmd.Parameters.AddWithValue("@idListaCompra", objPedido.idListaCompra);
             cmd.Parameters.AddWithValue("@estadoP", objPedido.Estado);
+            cmd.Parameters.AddWithValue("@MontoTotal", objPedido.MontoTotal);
             cmd.ExecuteNonQuery();
             conexion.Close();
         }
@@ -52,6 +53,17 @@ namespace DAO
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add(new SqlParameter("@idEstado", idEstado));
             cmd.Parameters.Add(new SqlParameter("@idPedido", idPedido));            
+            cmd.ExecuteNonQuery();
+            conexion.Close();
+
+        }
+        public void DeletePedido(int idPedido)
+        {
+            conexion.Open();
+            SqlCommand cmd = new SqlCommand("SP_Delete_Pedido", conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+            
+            cmd.Parameters.Add(new SqlParameter("@idPedido", idPedido));
             cmd.ExecuteNonQuery();
             conexion.Close();
 

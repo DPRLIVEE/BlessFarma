@@ -8,7 +8,7 @@ using DTO;
 
 namespace CTR
 {
-    class CTR_DetallePedido
+    public class CTR_DetallePedido
     {
         DAO_DetallePedido DAODPedido;
 

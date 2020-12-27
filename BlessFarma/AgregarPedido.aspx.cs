@@ -54,6 +54,22 @@ namespace BlessFarma
 
         }
 
+        public int ObtenerIDProducto(DTO_ProductoListaCompra DTOProducto, string nomProducto)
+        {
+            string nomP = "";
+            int idP = 0;
+            CTR_ProductoListCompra objProducto = new CTR_ProductoListCompra();
+            DataTable dtProducto = new DataTable();
+            dtProducto = objProducto.SelectProductoLC(DTOProducto);
+            foreach(DataRow row in dtProducto.Rows)
+            {
+                nomP = row["nombreProducto"].ToString();
+                if (nomP == nomProducto) return idP = int.Parse(row["idProducto"].ToString());
+
+            }
+            return 0;
+        }
+
         protected void btnAgregarPedido_Click(object sender, EventArgs e)
         {
             
@@ -83,11 +99,12 @@ namespace BlessFarma
             DTOPedido.modoPago = ddlMedioPago.SelectedValue;
             DTOPedido.idProveedor = int.Parse(ddlProveedor.SelectedValue);
             DTOPedido.idListaCompra = objProductoLC.idListaCompra;
+            DTOPedido.MontoTotal = MontoTotal();
             DTOPedido.Estado = 1;         
             CTR_Pedido objPedido = new CTR_Pedido();
             objPedido.InsertPedido(DTOPedido);
             txtCantidad.Text = "";
-            //Insertar en DetallePedido
+            InsertProductos(objProductoLC);
 
         }
         public void RegistarDetallePedido()
@@ -145,28 +162,54 @@ namespace BlessFarma
             Session.Add("dtTransformacion", dtProducto);
 
         }
-        public string DataFieldSelect(string idI)
+        public void InsertProductos(DTO_ProductoListaCompra objPLC)
         {
-            string cadena = "";
+            string nom = "";
+            CTR_DetallePedido objDetalleP = new CTR_DetallePedido();
+            DTO_DetallePedido DTODetalleP = new DTO_DetallePedido();
+            
+            foreach (GridViewRow row in  GridView1.Rows)
+            {
+                nom= row.Cells[0].Text;
+                DTODetalleP.idProducto = ObtenerIDProducto(objPLC, nom);
+                DTODetalleP.cantidad= int.Parse(row.Cells[2].Text);
+                DTODetalleP.idPedido = ObtenerIDPedido();
+                DTODetalleP.precioTotal= Convert.ToDecimal(row.Cells[4].Text);              
+                objDetalleP.CTR_Insert_DetallePedido(DTODetalleP);
+            }
+        
+        
+        }
+        public decimal MontoTotal()
+        {
+            decimal total = 0;
+            CTR_DetallePedido objDetalleP = new CTR_DetallePedido();
+            DTO_DetallePedido DTODetalleP = new DTO_DetallePedido();
 
-            //foreach (ListItem item in ddlProducto.Items)
-            //{
-            //    item.Value = ddlProducto.SelectedItem.Value;
-            //    if (item.Value==idI)
-            //    cadena = string.Format("{0} <br/>", item.Text);
+            foreach (GridViewRow row in GridView1.Rows)
+            {               
+                total += Convert.ToDecimal(row.Cells[4].Text);               
+            }
+            return total;
+        }
 
-            //}
+        public int ObtenerIDPedido()
+        {
+            CTR_Pedido objPedido = new CTR_Pedido();
+            DataTable dtPedido = new DataTable();
+            dtPedido = objPedido.SelectPedido();
+            for (int i = 0; i <= dtPedido.Rows.Count; i++ )
+            {
+                if (i == dtPedido.Rows.Count) return i;
 
-       
-           
-     
-
-            return cadena;
+            }
+            return 0;
         }
 
         protected void btnAñadirProducto_Click(object sender, EventArgs e)
         {
             ListarProducto();
+            txtTotal.Text = MontoTotal().ToString();
         }
 
         protected void btnVolver_Click(object sender, EventArgs e)

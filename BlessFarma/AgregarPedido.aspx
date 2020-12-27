@@ -52,7 +52,11 @@
              <div>
                 <asp:GridView ID="GridView1" runat="server" ></asp:GridView>
             </div>
-  
+             <br />
+            <div>
+                <asp:Label ID="lblTotal" runat="server" Text="Total:"></asp:Label>
+                <asp:TextBox ID="txtTotal" runat="server"></asp:TextBox>
+            </div>
             <div style="text-align:center" >
                 <asp:Button ID="btnAgregarP" runat="server" Text="Guardar" OnClick="btnAgregarP_Click" />
             </div>

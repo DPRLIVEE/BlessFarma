@@ -12,7 +12,7 @@ namespace DTO
         public int idProducto { get; set; }
         public int cantidad { get; set; }
         public int idPedido { get; set; }
-        public decimal precioTotalProducto { get; set; }
-        public decimal MontoTotal { get; set; }
+        public decimal precioTotal { get; set; }
+        
     }
 }

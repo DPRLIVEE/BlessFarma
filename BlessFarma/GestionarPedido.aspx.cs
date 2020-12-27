@@ -64,9 +64,9 @@ namespace BlessFarma
 
                 if(state=="Creado")
                 {
-                    e.Row.Cells[9].FindControl("btnRechazar").Visible = false;
-                    e.Row.Cells[9].FindControl("btnAceptar").Visible = false;
-                    e.Row.Cells[9].FindControl("btnEntregado").Visible = false;
+                    e.Row.Cells[10].FindControl("btnRechazar").Visible = false;
+                    e.Row.Cells[10].FindControl("btnAceptar").Visible = false;
+                    e.Row.Cells[10].FindControl("btnEntregado").Visible = false;
                 }
 
                 if (state == "En Espera")
@@ -74,17 +74,18 @@ namespace BlessFarma
                     //Actualizar
                     e.Row.Cells[8].Controls.Clear();
                     //Eliminar
-                    e.Row.Cells[7].Controls.Clear();
-                    e.Row.Cells[9].FindControl("btnEnviar").Visible = false;
-                    e.Row.Cells[9].FindControl("btnEntregado").Visible = false;
+                    e.Row.Cells[9].Controls.Clear();
+                    e.Row.Cells[10].FindControl("btnEnviar").Visible = false;
+                    e.Row.Cells[10].FindControl("btnEntregado").Visible = false;
 
                 }
                 if (state == "Aceptado")
                 {
                     
-                    e.Row.Cells[9].FindControl("btnEnviar").Visible = false;
-                    e.Row.Cells[9].FindControl("btnRechazar").Visible = false;
-                    e.Row.Cells[9].FindControl("btnAceptar").Visible = false;
+                    e.Row.Cells[10].FindControl("btnEnviar").Visible = false;
+                    e.Row.Cells[10].FindControl("btnRechazar").Visible = false;
+                    e.Row.Cells[10].FindControl("btnAceptar").Visible = false;
+                    e.Row.Cells[9].FindControl("btnAnular").Visible = false;
 
                     //Eliminar
                     e.Row.Cells[7].Controls.Clear();
@@ -108,7 +109,7 @@ namespace BlessFarma
 
         protected void gvPedidos_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-
+            CTR_Pedido CTRPedido = new CTR_Pedido();
             if (e.CommandName == "EnviarP")
             {
                 idPedido = Convert.ToInt32(gvPedidos.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["idPedido"].ToString());
@@ -151,8 +152,14 @@ namespace BlessFarma
 
 
             }
+            if (e.CommandName == "AnularP")
+            {
+                idPedido = Convert.ToInt32(gvPedidos.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["idPedido"].ToString());
+                
+                CTRPedido.DeletePedido(idPedido);
+            }
 
-            CTR_Pedido CTRPedido = new CTR_Pedido();
+            
             CTRPedido.UpdatePedido(idEstado, idPedido);
             ListarPedido();
         }

@@ -32,5 +32,9 @@ namespace CTR
         {
              DAOPedido.UpdatePedido(idE, idPe);       
         }
+        public void DeletePedido(int idPe)
+        {
+            DAOPedido.DeletePedido( idPe);
+        }
     }
 }
