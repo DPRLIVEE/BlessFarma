@@ -14,7 +14,7 @@
         </div>
         <br />
         <div>
-            <asp:GridView ID="gvPedidos" runat="server" DataKeyNames="idPedido,Estado,razonSocial,FechaEmision,FechaEntrega,idListaCompra,MontoTotal" AutoGenerateColumns="False" OnRowCommand="gvPedidos_RowCommand" OnRowDataBound="gvPedidos_RowDataBound">
+            <asp:GridView ID="gvPedidos" runat="server" DataKeyNames="idPedido,Estado,razonSocial,FechaEmision,FechaEntrega,idListaCompra,modoPago,MontoTotal" AutoGenerateColumns="False" OnRowCommand="gvPedidos_RowCommand" OnRowDataBound="gvPedidos_RowDataBound">
                 <Columns>
                     <asp:BoundField HeaderText="N° Pedido" DataField="idPedido"/>
                     <asp:BoundField HeaderText="Estado" DataField="Estado"/>  
@@ -22,6 +22,7 @@
                     <asp:BoundField HeaderText="Fecha Emsion" DataField="FechaEmision"/>
                     <asp:BoundField HeaderText="Fecha Entrega" DataField="FechaEntrega"/>
                     <asp:BoundField HeaderText="N° Lista Compra" DataField="idListaCompra"/>
+                    <asp:BoundField HeaderText="Modo Pago" DataField="modoPago"/>
                     <asp:BoundField HeaderText="Monto Total" DataField="MontoTotal"/>
                     <asp:TemplateField HeaderText="Ver">
                         <ItemTemplate>

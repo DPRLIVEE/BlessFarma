@@ -141,16 +141,15 @@ namespace BlessFarma
             }
             if (e.CommandName == "VerP")
             {
-                DTO_Pedido objPedido = new DTO_Pedido();
-                
-                objPedido.FechaEntrega = Convert.ToDateTime(gvPedidos.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["idPedido"].ToString());
-                idPedido = Convert.ToInt32(gvPedidos.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["idPedido"].ToString());
-                idPedido = Convert.ToInt32(gvPedidos.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["idPedido"].ToString());
-                idPedido = Convert.ToInt32(gvPedidos.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["idPedido"].ToString());
-                idPedido = Convert.ToInt32(gvPedidos.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["idPedido"].ToString());
-
-
-
+                DTO_Pedido objPedido = new DTO_Pedido();               
+                objPedido.idPedido = Convert.ToInt32(gvPedidos.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["idPedido"]);
+                objPedido.razonSocial = gvPedidos.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["razonSocial"].ToString();                
+                objPedido.FechaEntrega = Convert.ToDateTime(gvPedidos.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["FechaEntrega"].ToString());
+                objPedido.MontoTotal = Convert.ToDecimal(gvPedidos.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["MontoTotal"].ToString());
+                objPedido.modoPago = gvPedidos.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["modoPago"].ToString();
+                objPedido.FechaEmision = Convert.ToDateTime(gvPedidos.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["FechaEmision"].ToString());
+                Session.Add("Pedido",objPedido);
+                Response.Redirect("ConsultarPedido.aspx");
             }
             if (e.CommandName == "AnularP")
             {

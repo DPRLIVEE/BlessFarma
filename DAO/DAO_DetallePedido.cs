@@ -34,5 +34,19 @@ namespace DAO
             cmd.ExecuteNonQuery();
             conexion.Close();
         }
+
+        public DataTable SelectDetallePedido(int idPedido)
+        {
+            conexion.Open();
+            SqlCommand comando = new SqlCommand("SP_SelectDetallePedido", conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.Add(new SqlParameter("@idPedido", idPedido));
+            comando.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+            da.Fill(dt);
+            conexion.Close();
+            return dt;
+        }
     }
 }

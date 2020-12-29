@@ -52,7 +52,7 @@ namespace DAO
             SqlCommand cmd = new SqlCommand("SP_UpdatePedido", conexion);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add(new SqlParameter("@idEstado", idEstado));
-            cmd.Parameters.Add(new SqlParameter("@idPedido", idPedido));            
+                      
             cmd.ExecuteNonQuery();
             conexion.Close();
 

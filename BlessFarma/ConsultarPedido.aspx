@@ -9,16 +9,14 @@
 <body>
     <form id="form1" runat="server">
        <div>
-        <h1>Agregar Pedido </h1>
+        <h1>Consultar Pedido </h1>
         <br />
         <h2> Detalle del Pedido </h2>
-          
-                     <asp:Label ID="Label1" runat="server" Text="N° Pedido"></asp:Label>
+         
+              <asp:Label ID="Label1" runat="server" Text="N° Pedido"></asp:Label>
             <asp:TextBox ID="txtPedido" ReadOnly="true" runat="server"></asp:TextBox>
 
-            <br />
-            Estado:<asp:TextBox ID="txtEstado" ReadOnly="true" runat="server"></asp:TextBox>
-            <br />
+            <br />            
             Fecha de Emision:<asp:TextBox ID="txtFechaE" ReadOnly="true" runat="server"></asp:TextBox>
             <br />
             Feha de Entrega:<asp:TextBox ID="txtFechaEntrega" ReadOnly="true" runat="server"></asp:TextBox>

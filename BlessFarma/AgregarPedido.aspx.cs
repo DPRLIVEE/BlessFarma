@@ -195,15 +195,13 @@ namespace BlessFarma
 
         public int ObtenerIDPedido()
         {
+            int idP = 0;
             CTR_Pedido objPedido = new CTR_Pedido();
             DataTable dtPedido = new DataTable();
             dtPedido = objPedido.SelectPedido();
-            for (int i = 0; i <= dtPedido.Rows.Count; i++ )
-            {
-                if (i == dtPedido.Rows.Count) return i;
-
-            }
-            return 0;
+            DataRow lastRow = dtPedido.Rows[dtPedido.Rows.Count - 1];
+            return idP = int.Parse(lastRow["idPedido"].ToString());
+            
         }
 
         protected void btnAñadirProducto_Click(object sender, EventArgs e)

@@ -106,6 +106,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="ActualizarPedido.aspx" />
     <Content Include="AgregarPedido.aspx" />
     <Content Include="ConsultarPedido.aspx" />
     <Content Include="Contact.aspx" />
@@ -164,6 +165,13 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActualizarPedido.aspx.cs">
+      <DependentUpon>ActualizarPedido.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ActualizarPedido.aspx.designer.cs">
+      <DependentUpon>ActualizarPedido.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AgregarPedido.aspx.cs">
       <DependentUpon>AgregarPedido.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

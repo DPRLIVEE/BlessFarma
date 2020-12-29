@@ -11,7 +11,7 @@ namespace BlessFarma
 {
 
 
-    public partial class ConsultarPedido
+    public partial class ActualizarPedido
     {
 
         /// <summary>
@@ -60,6 +60,15 @@ namespace BlessFarma
         protected global::System.Web.UI.WebControls.TextBox txtFechaEntrega;
 
         /// <summary>
+        /// cldFechaEntrega control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Calendar cldFechaEntrega;
+
+        /// <summary>
         /// txtMedioPago control.
         /// </summary>
         /// <remarks>
@@ -69,6 +78,15 @@ namespace BlessFarma
         protected global::System.Web.UI.WebControls.TextBox txtMedioPago;
 
         /// <summary>
+        /// ddlMedioPago control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlMedioPago;
+
+        /// <summary>
         /// txtProveedor control.
         /// </summary>
         /// <remarks>
@@ -76,6 +94,15 @@ namespace BlessFarma
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtProveedor;
+
+        /// <summary>
+        /// ddlProveedor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlProveedor;
 
         /// <summary>
         /// gvProductos control.
