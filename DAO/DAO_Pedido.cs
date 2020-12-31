@@ -46,13 +46,29 @@ namespace DAO
             conexion.Close();
             return dt;
         }
-        public void UpdatePedido(int idEstado, int idPedido)
+        public void UpdatePedido(DTO_Pedido objPedido)
         {
             conexion.Open();
             SqlCommand cmd = new SqlCommand("SP_UpdatePedido", conexion);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add(new SqlParameter("@idEstado", idEstado));
-                      
+            cmd.Parameters.Add(new SqlParameter("@idPedido", objPedido.idPedido));
+            cmd.Parameters.AddWithValue("@modoPago", objPedido.modoPago);   
+            cmd.Parameters.AddWithValue("@FechaEntrega", objPedido.FechaEntrega);
+            cmd.Parameters.AddWithValue("@idProveedor", objPedido.idProveedor);
+            cmd.Parameters.AddWithValue("@MontoTotal", objPedido.MontoTotal);
+
+            cmd.ExecuteNonQuery();
+            conexion.Close();
+
+        }
+        public void UpdateEstadoPedido(int idP, int idE)
+        {
+            conexion.Open();
+            SqlCommand cmd = new SqlCommand("SP_UpdateEstadoPedido", conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@idPedido", idP));
+            cmd.Parameters.AddWithValue("@idEstado", idE);
+         
             cmd.ExecuteNonQuery();
             conexion.Close();
 

@@ -16,14 +16,14 @@ namespace BlessFarma
         protected void Page_Load(object sender, EventArgs e)
         {
             objProductoLC = new DTO_ProductoListaCompra();
+            objProductoLC.idListaCompra = (int)Session["idListaC"];
             if (!IsPostBack)
             {
                 txtEstado.Text = "Creado";
                 txtFechaE.Text = DateTime.Now.Date.ToShortDateString();
-                llenarDDLProveedor();
-                
-                objProductoLC.idListaCompra = (int)Session["idListaC"];
+                llenarDDLProveedor();                              
                 llenarDDLProducto(objProductoLC);
+               // LLenarPrueba(objProductoLC);
 
             }
         }
@@ -69,11 +69,22 @@ namespace BlessFarma
             }
             return 0;
         }
-
-        protected void btnAgregarPedido_Click(object sender, EventArgs e)
+        public void LLenarPrueba(DTO_ProductoListaCompra DTOPLC)
         {
-            
+            CTR_ProductoListCompra objProducto = new CTR_ProductoListCompra();
+            DataTable dtProducto = new DataTable();
+            dtProducto = objProducto.SelectProductoLC(DTOPLC);
+            gvPrueba.DataSource = dtProducto;
+            gvPrueba.DataBind();
         }
+        public bool ValidarTotalidadProductos(DTO_ProductoListaCompra DTOPLC)
+        {
+            CTR_ProductoListCompra objProducto = new CTR_ProductoListCompra();
+            DataTable dtProducto = new DataTable();
+            dtProducto = objProducto.SelectProductoLC(DTOPLC);
+            if (dtProducto.Rows.Count != gvProductos.Rows.Count) return false;
+            return true;       
+        }        
         protected void ddlProveedor_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -82,6 +93,7 @@ namespace BlessFarma
         protected void ddlProducto_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtCantidad.Text = "";
+            lblMensaje.Text = "";
         }
 
         protected void ddlMedioPago_SelectedIndexChanged(object sender, EventArgs e)
@@ -101,14 +113,20 @@ namespace BlessFarma
             DTOPedido.idListaCompra = objProductoLC.idListaCompra;
             DTOPedido.MontoTotal = MontoTotal();
             DTOPedido.Estado = 1;         
-            CTR_Pedido objPedido = new CTR_Pedido();
-            objPedido.InsertPedido(DTOPedido);
+            CTR_Pedido objPedido = new CTR_Pedido();            
             txtCantidad.Text = "";
-            InsertProductos(objProductoLC);
+            if (ValidarTotalidadProductos(objProductoLC))
+            {
+                objPedido.InsertPedido(DTOPedido);
+                InsertProductos(objProductoLC);
+                lblMensaje.Text = "Pedido registrado correctamente!";
+            } 
+            else lblMensaje.Text = "No se han seleccionado todos los productos.";
+
+
 
         }
-        public void RegistarDetallePedido()
-        { }
+  
         public DTO_Producto ObtenerFormato(int idPd)
         {
             int idP = 0;
@@ -128,14 +146,13 @@ namespace BlessFarma
                 } 
             }
             return objProducto;
-        }
-
-         
+        }        
         public void ListarProducto()
         {
             DataTable dtProducto = new DataTable();
             if(dtProducto.Columns.Count==0)
             {
+                dtProducto.Columns.Add("Cod", System.Type.GetType("System.Int32"));
                 dtProducto.Columns.Add("Producto", System.Type.GetType("System.String"));
                 dtProducto.Columns.Add("Formato", System.Type.GetType("System.String"));
                 dtProducto.Columns.Add("Cantidad", System.Type.GetType("System.Int32"));
@@ -150,6 +167,7 @@ namespace BlessFarma
                 dtProducto = dt_T;
             }
             DataRow row = dtProducto.NewRow();
+            row["Cod"] = Convert.ToInt32(ddlProducto.SelectedValue);
             row["Producto"] = ddlProducto.SelectedItem.Text;
             row["Formato"] = ObtenerFormato(Convert.ToInt32(ddlProducto.SelectedItem.Value)).formato;
             row["Cantidad"] = Convert.ToInt32(txtCantidad.Text);
@@ -157,8 +175,8 @@ namespace BlessFarma
             row["Total"] = Convert.ToDecimal(row["Cantidad"]) * Convert.ToDecimal(row["Precio"]);
 
             dtProducto.Rows.Add(row);
-            GridView1.DataSource = dtProducto;
-            GridView1.DataBind();
+            gvProductos.DataSource = dtProducto;
+            gvProductos.DataBind();
             Session.Add("dtTransformacion", dtProducto);
 
         }
@@ -168,13 +186,13 @@ namespace BlessFarma
             CTR_DetallePedido objDetalleP = new CTR_DetallePedido();
             DTO_DetallePedido DTODetalleP = new DTO_DetallePedido();
             
-            foreach (GridViewRow row in  GridView1.Rows)
+            foreach (GridViewRow row in  gvProductos.Rows)
             {
-                nom= row.Cells[0].Text;
+                nom= row.Cells[2].Text;
                 DTODetalleP.idProducto = ObtenerIDProducto(objPLC, nom);
-                DTODetalleP.cantidad= int.Parse(row.Cells[2].Text);
+                DTODetalleP.cantidad= int.Parse(row.Cells[4].Text);
                 DTODetalleP.idPedido = ObtenerIDPedido();
-                DTODetalleP.precioTotal= Convert.ToDecimal(row.Cells[4].Text);              
+                DTODetalleP.precioTotal= Convert.ToDecimal(row.Cells[6].Text);              
                 objDetalleP.CTR_Insert_DetallePedido(DTODetalleP);
             }
         
@@ -186,13 +204,12 @@ namespace BlessFarma
             CTR_DetallePedido objDetalleP = new CTR_DetallePedido();
             DTO_DetallePedido DTODetalleP = new DTO_DetallePedido();
 
-            foreach (GridViewRow row in GridView1.Rows)
+            foreach (GridViewRow row in gvProductos.Rows)
             {               
-                total += Convert.ToDecimal(row.Cells[4].Text);               
+                total += Convert.ToDecimal(row.Cells[6].Text);               
             }
             return total;
         }
-
         public int ObtenerIDPedido()
         {
             int idP = 0;
@@ -203,16 +220,31 @@ namespace BlessFarma
             return idP = int.Parse(lastRow["idPedido"].ToString());
             
         }
-
         protected void btnAñadirProducto_Click(object sender, EventArgs e)
         {
             ListarProducto();
             txtTotal.Text = MontoTotal().ToString();
         }
-
         protected void btnVolver_Click(object sender, EventArgs e)
         {
             Response.Redirect("GestionarPedido.aspx");
+        }
+        protected void gvProductos_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if( e.CommandName == "BorrarP")
+            {
+                decimal montoT = 0;
+                int id = int.Parse(e.CommandArgument.ToString());
+                lblMensaje.Text = "Indice del registro: " + id;
+                DataTable dt = new DataTable();
+                dt = (DataTable)Session["dtTransformacion"];
+                dt.Rows[id].Delete();
+                montoT = MontoTotal() - Convert.ToDecimal(gvProductos.Rows[id].Cells[4].Text);
+                txtTotal.Text = montoT.ToString();
+                gvProductos.DataSource = dt;
+                gvProductos.DataBind();
+            }
+           
         }
     }
 }

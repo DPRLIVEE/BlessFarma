@@ -28,9 +28,13 @@ namespace CTR
         {
             return DAOPedido.SelectPedido();
         }
-        public void UpdatePedido(int idE, int idPe)
+        public void CTR_UpdatePedido(DTO_Pedido objPedido)
         {
-             DAOPedido.UpdatePedido(idE, idPe);       
+             DAOPedido.UpdatePedido(objPedido);       
+        }
+        public void CTR_UpdateEstadoPedido(int idP, int idE)
+        {
+            DAOPedido.UpdateEstadoPedido(idP,idE);
         }
         public void DeletePedido(int idPe)
         {

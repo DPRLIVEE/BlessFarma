@@ -31,7 +31,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Editar">
                         <ItemTemplate>
-                            <asp:Button ID="btnEditar" runat="server" Text="Editar" />
+                            <asp:Button ID="btnEditar" runat="server" Text="Editar" CommandName="EditarP" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Anular">

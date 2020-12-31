@@ -50,9 +50,27 @@
             </div>
             <br />
              <div>
-                <asp:GridView ID="GridView1" runat="server" ></asp:GridView>
+                <asp:GridView ID="gvProductos" runat="server" OnRowCommand="gvProductos_RowCommand" >
+                    <Columns>
+                        
+                        <asp:TemplateField HeaderText="Borrar">
+                            <ItemTemplate>
+                                <asp:Button runat="server" ID="btnBorrar" Text="Borrar" CommandName="BorrarP" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                </asp:GridView>
+                  <asp:GridView ID="gvPrueba" runat="server"  >
+                    <Columns>
+                        
+                        
+                    </Columns>
+                </asp:GridView>
             </div>
              <br />
+            <asp:Label runat="server" ID="lblMensaje"> </asp:Label>
+            <asp:Label runat="server" ID="lblMensaje2"> </asp:Label>
+            <br />
             <div>
                 <asp:Label ID="lblTotal" runat="server" Text="Total:"></asp:Label>
                 <asp:TextBox ID="txtTotal" runat="server"></asp:TextBox>

@@ -16,10 +16,10 @@
             <asp:Label ID="Label1" runat="server" Text="N° Pedido"></asp:Label>
             <asp:TextBox ID="txtPedido" ReadOnly="true" runat="server"></asp:TextBox>
             <br />            
-            Fecha de Emision:<asp:TextBox ID="txtFechaE" ReadOnly="true" runat="server"></asp:TextBox>
+            Fecha de Emision:<asp:TextBox ID="txtFechaE"  runat="server"></asp:TextBox>
             <br />
-            Feha de Entrega:<asp:TextBox ID="txtFechaEntrega" ReadOnly="true" runat="server"></asp:TextBox>
-            <asp:Calendar ID="cldFechaEntrega" runat="server"></asp:Calendar>            
+            Feha de Entrega:<asp:TextBox ID="txtFechaEntrega"  runat="server"></asp:TextBox>
+            <asp:Calendar ID="cldFechaEntrega" runat="server" OnSelectionChanged="cldFechaEntrega_SelectionChanged"></asp:Calendar>            
             <br />
             Medio de Pago:<asp:TextBox ID="txtMedioPago" ReadOnly="true"  runat="server" ></asp:TextBox>   
             <asp:DropDownList ID="ddlMedioPago"  runat="server" OnSelectedIndexChanged="ddlMedioPago_SelectedIndexChanged">
@@ -35,13 +35,44 @@
             
       
         <h2> Detalle del Producto </h2>
-                          
+             Productos:
+            <asp:DropDownList ID="ddlProducto" AutoPostBack="true" runat="server">
+            </asp:DropDownList>
+            <br />
+             <asp:Label ID="Label3" runat="server" Text="Cantidad:"></asp:Label>
+            <asp:TextBox ID="txtCantidad" runat="server"></asp:TextBox>
+            <br />
              <div>
-                <asp:GridView ID="gvProductos" runat="server" ></asp:GridView>
+                <asp:GridView ID="gvProductos" runat="server"  OnRowCommand="gvProductos_RowCommand" >
+                    <Columns>
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:Button runat="server" ID="btnBorrar" Text="Borrar" CommandName="BorrarP" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"/>
+                            </ItemTemplate>                            
+                        </asp:TemplateField>
+                    </Columns>
+                </asp:GridView>
             </div>
-  
+            <br />
+            <div style="text-align:center" >
+                <asp:Button ID="btnAñadirP" runat="server" Text="Añadir" OnClick="btnAñadirP_Click" />
+            </div>
+            <br />
+            <div>
+                <asp:Label ID="lblTotal" runat="server" Text="Total:"></asp:Label>
+                <asp:TextBox ID="txtTotal" runat="server"></asp:TextBox>
+            </div>
+            <br />
+            <div style="text-align:center" >
+                <asp:Button ID="btnGuardar" runat="server" Text="Guardar" OnClick="btnGuardar_Click" />
+            </div>
+            <br />
             <div style="text-align:center" >
                 <asp:Button ID="btnVolver" runat="server" Text="Volver" OnClick="btnVolver_Click" />
+            </div>
+            <br />
+             <div style="text-align:center" >
+                <asp:Label ID="lblMsj" runat="server" />
             </div>
            
         </div>

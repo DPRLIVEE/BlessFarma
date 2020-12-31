@@ -59,7 +59,6 @@ namespace BlessFarma
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-
                 string state = e.Row.Cells[1].Text;
 
                 if(state=="Creado")
@@ -68,29 +67,21 @@ namespace BlessFarma
                     e.Row.Cells[10].FindControl("btnAceptar").Visible = false;
                     e.Row.Cells[10].FindControl("btnEntregado").Visible = false;
                 }
-
                 if (state == "En Espera")
                 {
-                    //Actualizar
-                    e.Row.Cells[8].Controls.Clear();
-                    //Eliminar
-                    e.Row.Cells[9].Controls.Clear();
+                    e.Row.Cells[8].FindControl("btnEditar").Visible = false;
+                    e.Row.Cells[9].FindControl("btnAnular").Visible = false;
                     e.Row.Cells[10].FindControl("btnEnviar").Visible = false;
                     e.Row.Cells[10].FindControl("btnEntregado").Visible = false;
 
                 }
                 if (state == "Aceptado")
                 {
-                    
+                    e.Row.Cells[8].FindControl("btnEditar").Visible = false;
                     e.Row.Cells[10].FindControl("btnEnviar").Visible = false;
                     e.Row.Cells[10].FindControl("btnRechazar").Visible = false;
                     e.Row.Cells[10].FindControl("btnAceptar").Visible = false;
-                    e.Row.Cells[9].FindControl("btnAnular").Visible = false;
-
-                    //Eliminar
-                    e.Row.Cells[7].Controls.Clear();
-                    //Actualizar
-                    e.Row.Cells[8].Controls.Clear();
+                    e.Row.Cells[9].FindControl("btnAnular").Visible = false;                  
                  
                 }
                 if (state == "Rechazado")
@@ -102,9 +93,7 @@ namespace BlessFarma
                     e.Row.Cells[9].FindControl("btnAceptar").Visible = false;
                     e.Row.Cells[9].FindControl("btnEntregado").Visible = false;
                 }
-
             }
-
         }
 
         protected void gvPedidos_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -113,32 +102,29 @@ namespace BlessFarma
             if (e.CommandName == "EnviarP")
             {
                 idPedido = Convert.ToInt32(gvPedidos.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["idPedido"].ToString());
-                idEstado= 2;  
+                idEstado= 2;
+                CTRPedido.CTR_UpdateEstadoPedido(idPedido, idEstado);
             }
             if (e.CommandName == "AceptarP")
             {
                  idPedido = Convert.ToInt32(gvPedidos.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["idPedido"].ToString());
                  idEstado = 3;
+                CTRPedido.CTR_UpdateEstadoPedido(idPedido, idEstado);
 
             }
             if (e.CommandName == "RechazarP")
             {
                 idPedido = Convert.ToInt32(gvPedidos.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["idPedido"].ToString());
                 idEstado = 4;
-              
+                CTRPedido.CTR_UpdateEstadoPedido(idPedido, idEstado);
             }
             if (e.CommandName == "EntregadoP")
             {
                  idPedido = Convert.ToInt32(gvPedidos.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["idPedido"].ToString());
                  idEstado = 5;
-     
+                CTRPedido.CTR_UpdateEstadoPedido(idPedido, idEstado);
             }
-            if (e.CommandName == "EntregadoP")
-            {
-                idPedido = Convert.ToInt32(gvPedidos.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["idPedido"].ToString());
-                idEstado = 5;
-
-            }
+           
             if (e.CommandName == "VerP")
             {
                 DTO_Pedido objPedido = new DTO_Pedido();               
@@ -156,10 +142,23 @@ namespace BlessFarma
                 idPedido = Convert.ToInt32(gvPedidos.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["idPedido"].ToString());
                 
                 CTRPedido.DeletePedido(idPedido);
+               
             }
-
+            if(e.CommandName  == "EditarP")
+            {
+                DTO_Pedido objPedido = new DTO_Pedido();
+                objPedido.idPedido = Convert.ToInt32(gvPedidos.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["idPedido"]);
+                objPedido.razonSocial = gvPedidos.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["razonSocial"].ToString();
+                objPedido.FechaEntrega = Convert.ToDateTime(gvPedidos.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["FechaEntrega"].ToString());
+                objPedido.MontoTotal = Convert.ToDecimal(gvPedidos.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["MontoTotal"].ToString());
+                objPedido.modoPago = gvPedidos.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["modoPago"].ToString();
+                objPedido.FechaEmision = Convert.ToDateTime(gvPedidos.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["FechaEmision"].ToString());               
+                objPedido.idListaCompra = Convert.ToInt32(gvPedidos.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["idListaCompra"].ToString());
+                Session.Add("Pedido", objPedido);
+                Response.Redirect("ActualizarPedido.aspx");
+            }
             
-            CTRPedido.UpdatePedido(idEstado, idPedido);
+           
             ListarPedido();
         }
 
