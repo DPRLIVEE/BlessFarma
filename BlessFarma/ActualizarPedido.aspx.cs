@@ -34,21 +34,43 @@ namespace BlessFarma
             DTOPLC = new DTO_ProductoListaCompra();
             dtProducto = new DataTable();
             DTOPLC.idListaCompra = DTOPedido.idListaCompra;
-
+            dtDetallePedido = CTRDPedido.CTR_SelectDetallePedido(DTOPedido.idPedido);
+                    
             if (!IsPostBack)
-            {
-
-               
+            {               
                 CargarDDLProducto(DTOPLC);
                 CargarDLLProveedor();
-                dtDetallePedido = CTRDPedido.CTR_SelectDetallePedido(DTOPedido.idPedido);
-                gvProductos.DataSource = dtDetallePedido;
-                gvProductos.DataBind();
                 Session.Add("dtP", dtDetallePedido);
-               // ListarProductos();
-
-
+                gvProductos.DataSource = dtDetallePedido;
+                gvProductos.DataBind();                             
             }
+            
+        }
+        public void UpdateProductos()
+        {            
+            
+            for(int i=0; i<dtDetallePedido.Rows.Count;i++)
+            {
+                
+                string p = dtDetallePedido.Rows[i][1].ToString();                
+                for (int j = 0; j < gvProductos.Rows.Count;j++)
+                {                       
+                    string p2 = gvProductos.Rows[j].Cells[1].Text;
+                    if (p != p2) 
+                    {
+
+                        DTO_Producto objProducto = new DTO_Producto();
+                        objProducto.idPedido = DTOPedido.idPedido;
+                        objProducto.idProducto= int.Parse(gvProductos.Rows[j].Cells[0].Text);
+                        objProducto.cantidad = int.Parse(gvProductos.Rows[j].Cells[3].Text);
+                        objProducto.PrecioTotal = Convert.ToDecimal(gvProductos.Rows[j].Cells[5].Text);
+                        CTR_ProductoListCompra objPLC = new CTR_ProductoListCompra();
+                        objPLC.UpdateProducto_x_DetallePedido(objProducto);
+
+                    }
+                    
+                }                                 
+            }       
         }
         public decimal MontoTotal()
         {
@@ -66,12 +88,7 @@ namespace BlessFarma
         {
             int idP = 0;
             DTO_Producto objProducto = new DTO_Producto();
-            DTOPLC.idListaCompra = (int)Session["idListaC"];
-            CTR_ProductoListCompra objProdLC = new CTR_ProductoListCompra();
-            DataTable dtProducto = new DataTable();
-            dtProducto = objProdLC.SelectProductoLC(DTOPLC);
-
-            foreach (DataRow row in dtProducto.Rows)
+            foreach (DataRow row in dtDetallePedido.Rows)
             {
                 idP = Convert.ToInt32(row["idProducto"].ToString());
                 if (idP == idPd)
@@ -145,40 +162,11 @@ namespace BlessFarma
             dtProducto = objProducto.SelectProductoLC(DTOPLC);
             if (dtProducto.Rows.Count != gvProductos.Rows.Count) return false;
             return true;
-        }
-
-        public void ListarProductos()
-        {
-            DataTable dtProducto = new DataTable();
-            DataRow row = dtProducto.NewRow();  
-            if (dtProducto.Columns.Count == 0)
-            {
-                dtProducto.Columns.Add("Producto", System.Type.GetType("System.String"));
-                dtProducto.Columns.Add("Formato", System.Type.GetType("System.String"));
-                dtProducto.Columns.Add("Cantidad", System.Type.GetType("System.Int32"));
-                dtProducto.Columns.Add("Precio", System.Type.GetType("System.Decimal"));
-                dtProducto.Columns.Add("Total", System.Type.GetType("System.Decimal"));
-
-                foreach (GridViewRow gvrow in gvProductos.Rows)
-                {
-                    row["Producto"] = gvrow.Cells[2].Text.ToString();
-                    row["Formato"] = gvrow.Cells[3].Text.ToString();
-                    row["Cantidad"] = Convert.ToInt32(gvrow.Cells[4].Text);
-                    row["Total"] = Convert.ToDecimal(gvrow.Cells[5].Text.ToString());
-                    row["Precio"] = Convert.ToDecimal(row["Total"])/ Convert.ToDecimal(row["Cantidad"]);
-                    
-                }
-                Session.Add("dtListaProducto", dtProducto);
-            }
-          
-           
-
-        }
+        }       
         protected void btnVolver_Click(object sender, EventArgs e)
         {
             Response.Redirect("GestionarPedido.aspx");
         }
-
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
             DTO_ProductoListaCompra DTOPLC = new DTO_ProductoListaCompra();
@@ -186,9 +174,12 @@ namespace BlessFarma
             if (ValidarTotalidadProductos(DTOPLC))
             {
                 UpdatePedido(DTOPedido);
+                UpdateProductos();
                 lblMsj.Text = "Actualizacion Correcta!";
+                txtTotal.Text = MontoTotal().ToString();
             }
             else lblMsj.Text = "No se han seleccionado todos los productos.";
+          
         }
 
         protected void ddlMedioPago_SelectedIndexChanged(object sender, EventArgs e)
@@ -218,11 +209,11 @@ namespace BlessFarma
                 //if (dt.Rows.Count != 0)
                 //{
                     dt.Rows[id].Delete();
-                    montoT = MontoTotal() - Convert.ToDecimal(gvProductos.Rows[id].Cells[4].Text);
+                    montoT = MontoTotal() - Convert.ToDecimal(gvProductos.Rows[id].Cells[5].Text);
                     txtTotal.Text = montoT.ToString();
                     gvProductos.DataSource = dt;
                     gvProductos.DataBind();
-                    Session.Add("dtListaProducto", dt);
+                    Session.Add("dtP", dt);
                 //}
            
             }
@@ -230,20 +221,21 @@ namespace BlessFarma
 
         protected void btnAñadirP_Click(object sender, EventArgs e)
         {
-            ListarProductos();
+           
             DataTable dtTemp = new DataTable();
-            dtTemp = (DataTable)Session["dtListaProducto"];
-            DataRow row = dtProducto.NewRow();
-            row["Producto"] = ddlProducto.SelectedItem.Text;
-            row["Formato"] = ObtenerFormato(Convert.ToInt32(ddlProducto.SelectedItem.Value)).formato;
-            row["Cantidad"] = Convert.ToInt32(txtCantidad.Text);
-            row["Precio"] = ObtenerFormato(Convert.ToInt32(ddlProducto.SelectedItem.Value)).precioCompra;
-            row["Total"] = Convert.ToDecimal(row["Cantidad"]) * Convert.ToDecimal(row["Precio"]);
-
+            dtTemp = (DataTable)Session["dtP"];
+            DataRow row = dtTemp.NewRow();
+            row["idProducto"] = ddlProducto.SelectedValue;
+            row["nombreProducto"] = ddlProducto.SelectedItem.Text;
+            row["formato"] = ObtenerFormato(Convert.ToInt32(ddlProducto.SelectedItem.Value)).formato;
+            row["cantidad"] = Convert.ToInt32(txtCantidad.Text);
+            row["precioCompra"] = ObtenerFormato(Convert.ToInt32(ddlProducto.SelectedItem.Value)).precioCompra;         
+            row["PrecioTotal"] = Convert.ToDecimal(row["cantidad"]) * Convert.ToDecimal(row["precioCompra"]);           
             dtTemp.Rows.Add(row);
             gvProductos.DataSource = dtTemp;
             gvProductos.DataBind();
-            Session.Add("dtListaProducto", dtProducto);
+            txtTotal.Text = MontoTotal().ToString();
+            Session.Add("dtP", dtTemp);
         }
     }
 }

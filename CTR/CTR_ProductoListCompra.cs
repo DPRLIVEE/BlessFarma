@@ -22,5 +22,9 @@ namespace CTR
         {
             return objProductoLC.SelectProductoLC(objProducotLC);
         }
+        public void UpdateProducto_x_DetallePedido(DTO_Producto objProducto)
+        {
+            objProductoLC.UpdateProducto_x_DetallePedido(objProducto);
+        }
     }
 }

@@ -10,5 +10,10 @@ namespace DTO
     {
         public string formato { get; set;}
         public decimal precioCompra { get; set; }
+
+        public decimal PrecioTotal { get; set; }
+        public int cantidad { get; set; }
+        public int idPedido { get; set; }
+        public int idProducto { get; set; }
     }
 }

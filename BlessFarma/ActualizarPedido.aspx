@@ -43,15 +43,23 @@
             <asp:TextBox ID="txtCantidad" runat="server"></asp:TextBox>
             <br />
              <div>
-                <asp:GridView ID="gvProductos" runat="server"  OnRowCommand="gvProductos_RowCommand" >
+                <asp:GridView ID="gvProductos" runat="server" DataKeyNames="idProducto,nombreProducto,formato,cantidad,precioCompra,PrecioTotal"  OnRowCommand="gvProductos_RowCommand" AutoGenerateColumns="false" >
                     <Columns>
+                        <asp:BoundField  HeaderText="Cod" DataField="idProducto"/>
+                         <asp:BoundField  HeaderText="Producto" DataField="nombreProducto"/>
+                         <asp:BoundField  HeaderText="Formato" DataField="formato"/>
+                         <asp:BoundField  HeaderText="Cantidad" DataField="cantidad"/>
+                        <asp:BoundField  HeaderText="Precio" DataField="precioCompra"/>
+                         <asp:BoundField  HeaderText="Total" DataField="PrecioTotal"/>
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:Button runat="server" ID="btnBorrar" Text="Borrar" CommandName="BorrarP" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"/>
+                                <asp:Button runat="server" ID="btnBorrar" Text="X" CommandName="BorrarP" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"/>
                             </ItemTemplate>                            
                         </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
+                 <br />
+                 <asp:GridView ID="GridView1" runat="server"></asp:GridView>
             </div>
             <br />
             <div style="text-align:center" >
