@@ -158,44 +158,44 @@ function GetError(error) {
     //    });
     //});
 
-$.ajax({
-    type: "post",
-    dataType: "json",
-    contentType: "application/json; charset=utf-8",
-    url: 'Paginas/Otros/Metodos.aspx/GetEstadosPedidoActual',
-    //data: '{"CodPerfil": "' + CodPerfil + '","CodConductor": "' + CodConductor + '"}',
-    success: EstadosPedido,
-    error: GetError,
-    complete: function () {
+//$.ajax({
+//    type: "post",
+//    dataType: "json",
+//    contentType: "application/json; charset=utf-8",
+//    url: '',
+//    //data: '{"CodPerfil": "' + CodPerfil + '","CodConductor": "' + CodConductor + '"}',
+//    success: EstadosPedido,
+//    error: GetError,
+//    complete: function () {
        
-    }
-});
+//    }
+//});
 
-$.ajax({
-    type: "post",
-    dataType: "json",
-    contentType: "application/json; charset=utf-8",
-    url: 'Paginas/Otros/Metodos.aspx/GetPedidos2Semanas',
-    //data: '{"CodPerfil": "' + CodPerfil + '","CodConductor": "' + CodConductor + '"}',
-    success: Pedidos2Semanas,
-    error: GetError,
-    complete: function () {
+//$.ajax({
+//    type: "post",
+//    dataType: "json",
+//    contentType: "application/json; charset=utf-8",
+//    url: '',
+//    //data: '{"CodPerfil": "' + CodPerfil + '","CodConductor": "' + CodConductor + '"}',
+//    success: Pedidos2Semanas,
+//    error: GetError,
+//    complete: function () {
 
-    }
-});
+//    }
+//});
 
-$.ajax({
-    type: "post",
-    dataType: "json",
-    contentType: "application/json; charset=utf-8",
-    url: 'Paginas/Otros/Metodos.aspx/DashBoarSelectAll',
-    //data: '{"CodPerfil": "' + CodPerfil + '","CodConductor": "' + CodConductor + '"}',
-    success: DashBoarItems,
-    error: GetError,
-    complete: function () {
+//$.ajax({
+//    type: "post",
+//    dataType: "json",
+//    contentType: "application/json; charset=utf-8",
+//    url: '',
+//    //data: '{"CodPerfil": "' + CodPerfil + '","CodConductor": "' + CodConductor + '"}',
+//    success: DashBoarItems,
+//    error: GetError,
+//    complete: function () {
 
-    }
-});
+//    }
+//});
 
 
 

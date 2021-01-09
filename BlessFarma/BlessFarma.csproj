@@ -1839,6 +1839,7 @@
     <Content Include="bootstrap\js\bootstrap.min.js.map" />
     <Content Include="imagenes\BlessFarmalogo.png" />
     <Content Include="imagenes\log.svg" />
+    <Content Include="imagenes\Preloader_11.gif" />
     <Content Include="imagenes\register.svg" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\datepicker-es.js" />
@@ -1849,6 +1850,8 @@
     <Content Include="js\jquery.timers.js" />
     <Content Include="js\js_Producto.js" />
     <Content Include="js\js_Proveedor.js" />
+    <Content Include="js\RegistrarLista.js" />
+    <Content Include="js\SpeechRecognition.js" />
     <Content Include="js\sweetalert.js" />
     <Content Include="Master.Master" />
     <Content Include="DashBoard\vendor\fonts\circular-std\CircularStd-Black.woff" />
@@ -1929,13 +1932,18 @@
     <Content Include="fontawesome\webfonts\fa-solid-900.ttf" />
     <Content Include="fontawesome\webfonts\fa-solid-900.woff" />
     <Content Include="fontawesome\webfonts\fa-solid-900.woff2" />
-    <Content Include="Paginas\AgregarLista.aspx" />
-    <Content Include="Paginas\ConsultarLista.aspx" />
-    <Content Include="Paginas\GenerarListaCompras.aspx" />
-    <Content Include="Paginas\GestionarPedido.aspx" />
-    <Content Include="Paginas\Login.aspx" />
-    <Content Include="Paginas\ManejarMerma.aspx" />
-    <Content Include="Paginas\Principal.aspx" />
+    <Content Include="Paginas\GestionarPedido\ActualizarPedido.aspx" />
+    <Content Include="Paginas\GestionarPedido\AgregarPedido.aspx" />
+    <Content Include="Paginas\GestionarPedido\ConsultarPedido.aspx" />
+    <Content Include="Paginas\GestionarPedido\GestionarPedido.aspx" />
+    <Content Include="Paginas\GestionarPedido\SeleccionarLista.aspx" />
+    <Content Include="Paginas\ListaCompras\ActualizarLista.aspx" />
+    <Content Include="Paginas\ListaCompras\AgregarLista.aspx" />
+    <Content Include="Paginas\ListaCompras\ConsultarLista.aspx" />
+    <Content Include="Paginas\ListaCompras\ListaCompras.aspx" />
+    <Content Include="Paginas\Login\Login.aspx" />
+    <Content Include="Paginas\GestionarMerma\ManejarMerma.aspx" />
+    <Content Include="Paginas\Principal\Principal.aspx" />
     <Content Include="Scripts\i18n\af.js" />
     <Content Include="Scripts\i18n\ar.js" />
     <Content Include="Scripts\i18n\az.js" />
@@ -2236,53 +2244,88 @@
     <Compile Include="Master.Master.designer.cs">
       <DependentUpon>Master.Master</DependentUpon>
     </Compile>
-    <Compile Include="Paginas\AgregarLista.aspx.cs">
-      <DependentUpon>AgregarLista.aspx</DependentUpon>
+    <Compile Include="Paginas\GestionarPedido\ActualizarPedido.aspx.cs">
+      <DependentUpon>ActualizarPedido.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Paginas\AgregarLista.aspx.designer.cs">
-      <DependentUpon>AgregarLista.aspx</DependentUpon>
+    <Compile Include="Paginas\GestionarPedido\ActualizarPedido.aspx.designer.cs">
+      <DependentUpon>ActualizarPedido.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Paginas\ConsultarLista.aspx.cs">
-      <DependentUpon>ConsultarLista.aspx</DependentUpon>
+    <Compile Include="Paginas\GestionarPedido\AgregarPedido.aspx.cs">
+      <DependentUpon>AgregarPedido.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Paginas\ConsultarLista.aspx.designer.cs">
-      <DependentUpon>ConsultarLista.aspx</DependentUpon>
+    <Compile Include="Paginas\GestionarPedido\AgregarPedido.aspx.designer.cs">
+      <DependentUpon>AgregarPedido.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Paginas\GenerarListaCompras.aspx.cs">
-      <DependentUpon>GenerarListaCompras.aspx</DependentUpon>
+    <Compile Include="Paginas\GestionarPedido\ConsultarPedido.aspx.cs">
+      <DependentUpon>ConsultarPedido.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Paginas\GenerarListaCompras.aspx.designer.cs">
-      <DependentUpon>GenerarListaCompras.aspx</DependentUpon>
+    <Compile Include="Paginas\GestionarPedido\ConsultarPedido.aspx.designer.cs">
+      <DependentUpon>ConsultarPedido.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Paginas\GestionarPedido.aspx.cs">
+    <Compile Include="Paginas\GestionarPedido\GestionarPedido.aspx.cs">
       <DependentUpon>GestionarPedido.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Paginas\GestionarPedido.aspx.designer.cs">
+    <Compile Include="Paginas\GestionarPedido\GestionarPedido.aspx.designer.cs">
       <DependentUpon>GestionarPedido.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Paginas\Login.aspx.cs">
+    <Compile Include="Paginas\GestionarPedido\SeleccionarLista.aspx.cs">
+      <DependentUpon>SeleccionarLista.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\GestionarPedido\SeleccionarLista.aspx.designer.cs">
+      <DependentUpon>SeleccionarLista.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\ListaCompras\ActualizarLista.aspx.cs">
+      <DependentUpon>ActualizarLista.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\ListaCompras\ActualizarLista.aspx.designer.cs">
+      <DependentUpon>ActualizarLista.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\ListaCompras\AgregarLista.aspx.cs">
+      <DependentUpon>AgregarLista.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\ListaCompras\AgregarLista.aspx.designer.cs">
+      <DependentUpon>AgregarLista.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\ListaCompras\ConsultarLista.aspx.cs">
+      <DependentUpon>ConsultarLista.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\ListaCompras\ConsultarLista.aspx.designer.cs">
+      <DependentUpon>ConsultarLista.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\ListaCompras\ListaCompras.aspx.cs">
+      <DependentUpon>ListaCompras.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\ListaCompras\ListaCompras.aspx.designer.cs">
+      <DependentUpon>ListaCompras.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\Login\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Paginas\Login.aspx.designer.cs">
+    <Compile Include="Paginas\Login\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Paginas\ManejarMerma.aspx.cs">
+    <Compile Include="Paginas\GestionarMerma\ManejarMerma.aspx.cs">
       <DependentUpon>ManejarMerma.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Paginas\ManejarMerma.aspx.designer.cs">
+    <Compile Include="Paginas\GestionarMerma\ManejarMerma.aspx.designer.cs">
       <DependentUpon>ManejarMerma.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Paginas\Principal.aspx.cs">
+    <Compile Include="Paginas\Principal\Principal.aspx.cs">
       <DependentUpon>Principal.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Paginas\Principal.aspx.designer.cs">
+    <Compile Include="Paginas\Principal\Principal.aspx.designer.cs">
       <DependentUpon>Principal.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -2343,8 +2386,7 @@
       <HintPath>..\..\SWVGEAD-2019-II\SWVGEAD\bin\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=3.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\SWVGEAD-2019-II\SWVGEAD\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
@@ -2465,6 +2507,7 @@
       <Name>DTO</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

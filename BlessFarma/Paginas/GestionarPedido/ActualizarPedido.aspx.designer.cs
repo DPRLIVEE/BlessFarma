@@ -7,164 +7,146 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace BlessFarma
+namespace BlessFarma.Paginas.GestionarPedido
 {
 
 
-    public partial class Master
+    public partial class ActualizarPedido
     {
 
         /// <summary>
-        /// Control PlaceHolderMaster.
+        /// Control UpdatePanelUsuario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder PlaceHolderMaster;
+        protected global::System.Web.UI.UpdatePanel UpdatePanelUsuario;
 
         /// <summary>
-        /// Control head.
+        /// Control tFechaEmision.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        protected global::System.Web.UI.WebControls.Label tFechaEmision;
 
         /// <summary>
-        /// Control form1.
+        /// Control tFechaEntrega.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.TextBox tFechaEntrega;
 
         /// <summary>
-        /// Control ltlRol.
+        /// Control ddlMedioPago.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltlRol;
+        protected global::System.Web.UI.WebControls.DropDownList ddlMedioPago;
 
         /// <summary>
-        /// Control imgUsuario.
+        /// Control ddlProveedor.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlImage imgUsuario;
+        protected global::System.Web.UI.WebControls.DropDownList ddlProveedor;
 
         /// <summary>
-        /// Control lblUsuario.
+        /// Control ddlProducto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblUsuario;
+        protected global::System.Web.UI.WebControls.DropDownList ddlProducto;
 
         /// <summary>
-        /// Control lblTipoUsuario.
+        /// Control tCantidad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblTipoUsuario;
+        protected global::System.Web.UI.WebControls.TextBox tCantidad;
 
         /// <summary>
-        /// Control lblUser.
+        /// Control tFormato.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblUser;
+        protected global::System.Web.UI.WebControls.Label tFormato;
 
         /// <summary>
-        /// Control imgUser.
+        /// Control tLaboratorio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlImage imgUser;
+        protected global::System.Web.UI.WebControls.Label tLaboratorio;
 
         /// <summary>
-        /// Control lblTitle.
+        /// Control tPrecio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTitle;
+        protected global::System.Web.UI.WebControls.Label tPrecio;
 
         /// <summary>
-        /// Control ContentPlaceHolder1.
+        /// Control btnAgregarProducto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        protected global::System.Web.UI.WebControls.Button btnAgregarProducto;
 
         /// <summary>
-        /// Control hdnurl.
+        /// Control gvAgregarPedido.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdnurl;
+        protected global::System.Web.UI.WebControls.GridView gvAgregarPedido;
 
         /// <summary>
-        /// Control hdnUser.
+        /// Control tPrecioTotal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdnUser;
+        protected global::System.Web.UI.WebControls.Label tPrecioTotal;
 
         /// <summary>
-        /// Control hdnPassword.
+        /// Control btnActualizarPedido.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdnPassword;
+        protected global::System.Web.UI.WebControls.Button btnActualizarPedido;
 
         /// <summary>
-        /// Control lblMensaje.
+        /// Control btnCancelar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMensaje;
-
-        /// <summary>
-        /// Control Label1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
-
-        /// <summary>
-        /// Control Label2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Button btnCancelar;
     }
 }

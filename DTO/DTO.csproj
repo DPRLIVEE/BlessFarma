@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Analytics.Interfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=9f877b68b06e0b5e, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Analytics.Interfaces.Streaming, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8341efbf9a4dc8c9, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Analytics.Types, Version=1.0.0.0, Culture=neutral, PublicKeyToken=9f877b68b06e0b5e, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,10 +44,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="DTO_Pedido.cs" />
-    <Compile Include="DTO_ProductoListaCompra.cs" />
-    <Compile Include="DTO_Proveedor.cs" />
+    <Compile Include="ClassResultV.cs" />
+    <Compile Include="DtoB.cs" />
+    <Compile Include="DtoDetallePedido.cs" />
+    <Compile Include="DtoListaCompra.cs" />
+    <Compile Include="DtoListaCompraSeleccionado.cs" />
+    <Compile Include="DtoMetodoPago.cs" />
+    <Compile Include="DtoPedido.cs" />
+    <Compile Include="DtoProdListaCompra.cs" />
+    <Compile Include="DtoProducto.cs" />
+    <Compile Include="DtoProveedor.cs" />
+    <Compile Include="DtoTipoUsuario.cs" />
+    <Compile Include="DtoUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
