@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>a16d4078-5687-41dc-8dee-63b62899a825</ProjectGuid>
+    <ProjectGuid>{A16D4078-5687-41DC-8DEE-63B62899A825}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DTO</RootNamespace>
@@ -31,24 +31,32 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System"/>
-    
-    <Reference Include="System.Core"/>
-    <Reference Include="System.Xml.Linq"/>
-    <Reference Include="System.Data.DataSetExtensions"/>
-    
-    
-    <Reference Include="Microsoft.CSharp"/>
-    
-    <Reference Include="System.Data"/>
-    
-    <Reference Include="System.Net.Http"/>
-    
-    <Reference Include="System.Xml"/>
+    <Reference Include="Microsoft.Analytics.Interfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=9f877b68b06e0b5e, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Analytics.Interfaces.Streaming, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8341efbf9a4dc8c9, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Analytics.Types, Version=1.0.0.0, Culture=neutral, PublicKeyToken=9f877b68b06e0b5e, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="ClassResultV.cs" />
+    <Compile Include="DtoB.cs" />
+    <Compile Include="DtoDetallePedido.cs" />
+    <Compile Include="DtoListaCompra.cs" />
+    <Compile Include="DtoListaCompraSeleccionado.cs" />
+    <Compile Include="DtoMetodoPago.cs" />
+    <Compile Include="DtoPedido.cs" />
+    <Compile Include="DtoProdListaCompra.cs" />
+    <Compile Include="DtoProducto.cs" />
+    <Compile Include="DtoProveedor.cs" />
+    <Compile Include="DtoTipoUsuario.cs" />
+    <Compile Include="DtoUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
- </Project>
+</Project>

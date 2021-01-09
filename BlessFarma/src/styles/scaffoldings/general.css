@@ -1,0 +1,37 @@
+.map-iframe {
+    border: 0;
+    font-family: sans-serif;
+    height: 40rem;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.app-container {
+}
+
+.button {
+    background-color: var(--color-brand-red-light);
+    background-image: none;
+    border: 0;
+    color: var(--color-white);
+    font-weight: bold;
+    margin: 0 3px;
+    padding: 8px 18px;
+    text-shadow: none;
+    text-transform: uppercase;
+
+    &.-secondary {
+        background-color: var(--color-black);
+
+        &:hover {
+            background-color: var(--color-brand-red);
+        }
+
+    }
+
+    &:hover {
+        background-color: var(--color-brand-red);
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,344 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Master.master.cs" Inherits="BlessFarma.Master" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>BlessFarma</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/imagenes/BlessFarmalogo.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/imagenes/BlessFarmalogo.png" />
+
+    <asp:PlaceHolder ID="PlaceHolderMaster" runat="server">
+
+        <link href="/css/new design/css/all.min.css" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+        <link href="/css/new design/css/sb-admin-2.css" rel="stylesheet" />
+        <link href="../../css/jquery/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" />
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="/css/new design/js/jquery.min.js"></script>
+        <script src="/css/new design/js/bootstrap.bundle.min.js"></script>
+        <script src="../../js/jquery.timers.js"></script>
+        <script src="../../js/fun_general.js?v=2"></script>
+
+    </asp:PlaceHolder>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <style>
+        .sidebar-header {
+            height: auto !important;
+        }
+
+        .item__menu {
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+    </style>
+
+</head>
+
+<body id="body">
+    <div id="loader" class="se-pre-con"></div>
+    <form id="form1" enctype="multipart/form-data" runat="server">
+        <asp:ScriptManager runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True">
+        </asp:ScriptManager>
+        <div id="wrapper">
+            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+                <a class="sidebar-header sidebar-brand d-flex align-items-center justify-content-center" href="#">
+                    <div class="sidebar-brand-icon">
+                        <img src="/imagenes/BlessFarmalogo.png" width="35" height="35" />
+                    </div>
+                    <div class="sidebar-brand-text mx-3">BlessFarma</div>
+                </a>
+
+                <li class="nav-item active d-none">
+                    <asp:Literal runat="server" ID="ltlRol"></asp:Literal>
+                </li>
+
+                <li class="nav-item text-center">
+                    <img runat="server" id="imgUsuario" class="img-profile rounded-circle " width="80" height="80" />
+                </li>
+
+                <li class="nav-item" style="text-align-last: center;">
+                    <a class="nav-link disabled" style="padding: 1rem 1rem 0.3rem 1rem;"><i class='fas fa-fw fa-user text-white'></i><span runat="server" id="lblUsuario"></span></a>
+                    <a class="nav-link disabled" style="padding: 0.3rem 1rem 1rem 1rem;"><i class='fas fa-fw fa-users text-white'></i><span runat="server" id="lblTipoUsuario"></span></a>
+                </li>
+
+                <%--<a class ="nav-link disabled text-center"><i class='fas fa-fw fa-users text-white'></i><span class="mr-2 d-none d-lg-inline text-white  small" runat="server" id="Span1"></span></a>--%>
+
+                <hr class="sidebar-divider my-0">
+
+                <li class="nav-item">
+                    <a href="../Principal/Principal.aspx" class="nav-link collapsed">
+                        <i class="fas fa-fw fa-home"></i>
+                        <span>Principal</span>
+                    </a>
+                </li>
+
+                <hr class="sidebar-divider ">
+                <div class="sidebar-heading">
+                    Funciones
+                </div>
+                <li class="nav-item">
+                    <a href="../ListaCompras/ListaCompras.aspx" class="nav-link collapsed">
+                        <i class='fas fa-fw fa-shopping-cart'></i>
+                        <span>Lista de Compras</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="../GestionarPedido/GestionarPedido.aspx" class="nav-link collapsed">
+                        <i class='fas fa-fw fa-book'></i>
+                        <span>Gestionar Pedido</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="../GestionarMerma/ManejarMerma.aspx" class="nav-link collapsed">
+                        <i class='fas fa-fw fa-list-alt'></i>
+                        <span>Gestionar Merma</span>
+                    </a>
+                </li>
+
+                <hr class="sidebar-divider my-0 ">
+
+                <li class="nav-item">
+                    <a href='index.html' class="nav-link" data-toggle="modal" data-target="#logoutModal" runat="server">
+                        <i class='fas fa-fw fa-sign-out-alt'></i>
+                        <span>Cerrar Sesión</span></a>
+                </li>
+
+                <hr class="sidebar-divider d-none d-md-block">
+                <div class="text-center d-none d-md-inline">
+                    <button type="button" class="rounded-circle border-0" id="sidebarToggle"></button>
+                </div>
+            </ul>
+
+            <div id="content-wrapper" class="d-flex flex-column">
+                <div id="content">
+                    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                        <button type="button" id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                            <i class="fa fa-bars"></i>
+                        </button>
+
+                        <div class="search-box d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                            <input id="texto" type="text" class="search-txt active" placeholder="Escribe para buscar" />
+                            <a class="search-btn">
+                                <i class="fas fa-search"></i>
+                            </a>
+                            <a id="micro" class="search-micro">
+                                <i class="fas fa-microphone"></i>
+                            </a>
+                        </div>
+
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item dropdown no-arrow d-sm-none">
+                                <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-search fa-fw"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                                    <form class="form-inline mr-auto w-100 navbar-search">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-primary" type="button">
+                                                    <i class="fas fa-search fa-sm"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown no-arrow mx-1">
+                                <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-bell fa-fw"></i>
+                                    <span class="badge badge-danger badge-counter" style="background-color: #36b9cc">3+</span>
+                                </a>
+                                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                                    <h6 class="dropdown-header">Centro de Alerta
+                                    </h6>
+                                    <a class="dropdown-item d-flex align-items-center" href="#">
+                                        <div class="mr-3">
+                                            <div class="icon-circle bg-primary">
+                                                <i class="fas fa-file-alt text-white"></i>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="small text-gray-500">Diciembre 12, 2019</div>
+                                            <span class="font-weight-bold">Un nuevo pedido ha llegado!</span>
+                                        </div>
+                                    </a>
+                                    <a class="dropdown-item d-flex align-items-center" href="#">
+                                        <div class="mr-3">
+                                            <div class="icon-circle bg-success">
+                                                <i class="fas fa-donate text-white"></i>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="small text-gray-500">Diciembre 7, 2019</div>
+                                            Listas de compra pendiente!
+                                        </div>
+                                    </a>
+                                    <a class="dropdown-item d-flex align-items-center" href="#">
+                                        <div class="mr-3">
+                                            <div class="icon-circle bg-warning">
+                                                <i class="fas fa-exclamation-triangle text-white"></i>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="small text-gray-500">Diciembre 2, 2019</div>
+                                            Pedido rechazado por proveedor.
+                                        </div>
+                                    </a>
+                                    <a class="dropdown-item text-center small text-gray-500" href="#">Mostrar todas las Alertas</a>
+                                </div>
+                            </li>
+
+                            <div class="topbar-divider d-none d-sm-block"></div>
+
+                            <li class="nav-item dropdown no-arrow">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="mr-2 d-none d-lg-inline  small" runat="server" id="lblUser"></span>
+                                    <img runat="server" id="imgUser" class="img-profile rounded-circle" width="60" height="60" />
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Perfil
+                                    </a>
+
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Ajustes
+                                    </a>
+
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Actividades
+                                    </a>
+
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Cerrar Sesión
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="container-fluid">
+                        <asp:Label runat="server" ID="lblTitle" Style="padding-left: 75px !important; display: none"></asp:Label>
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                </div>
+
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Copyright &copy; BlessFarma 2020</span>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+
+        <asp:HiddenField ID="hdnurl" runat="server" />
+        <asp:HiddenField ID="hdnUser" runat="server" />
+        <asp:HiddenField ID="hdnPassword" runat="server" />
+
+        <div class="modal fade popUpMensaje" id="popUpMensaje" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Alerta</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <asp:Label ID="lblMensaje" CssClass="lblMensaje" runat="server"></asp:Label>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade popAlerta" id="popAlerta" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color: #861313">
+                        <h4 class="modal-title" style="color: white;">Alerta</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="font-size: xx-large; color: white;">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <asp:Label ID="Label1" CssClass="lblMensajeAlerta" runat="server"></asp:Label>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade popUpLogOut" id="popUpLogOut" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Mensaje de sistema</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <asp:Label ID="Label2" CssClass="lblMensaje" runat="server">Tiempo de sesion expirado.<br />Desconexión por Inactividad</asp:Label>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">¿Listo para salir?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Seleccione "Salir" si desea terminar su sesión</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                        <button class="btn btn-primary" style="cursor: pointer" onserverclick="salir_ServerClick" runat="server">Salir</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+
+<script>
+    $(document).ready(function () {
+        $(".search-btn").click(function () {
+            $(".search-txt").toggleClass("active").val("");
+            $(this).toggleClass("animate");
+        });
+    });
+</script>
+<script>
+    // Animate loader off screen
+    $(function () {
+        setTimeout(function () {
+            $("#loader").fadeOut("fast");
+        }, 1000);
+    });
+ </script>
+<script src="../../js/SpeechRecognition.js"></script>
+<script src="/css/new design/js/sb-admin-2.js"></script>
+
+</html>

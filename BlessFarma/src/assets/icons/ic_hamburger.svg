@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>sdk_ic/hamburger</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="sdk_ic/hamburger" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M2.5,11 L22.5,11 C22.7761424,11 23,11.2238576 23,11.5 L23,13.5 C23,13.7761424 22.7761424,14 22.5,14 L2.5,14 C2.22385763,14 2,13.7761424 2,13.5 L2,11.5 C2,11.2238576 2.22385763,11 2.5,11 Z" id="Rectangle-33-Copy" fill="#444444"></path>
+        <path d="M2.5,4 L22.5,4 C22.7761424,4 23,4.22385763 23,4.5 L23,6.5 C23,6.77614237 22.7761424,7 22.5,7 L2.5,7 C2.22385763,7 2,6.77614237 2,6.5 L2,4.5 C2,4.22385763 2.22385763,4 2.5,4 Z" id="Rectangle-33-Copy-2" fill="#444444"></path>
+        <path d="M2.5,18 L22.5,18 C22.7761424,18 23,18.2238576 23,18.5 L23,20.5 C23,20.7761424 22.7761424,21 22.5,21 L2.5,21 C2.22385763,21 2,20.7761424 2,20.5 L2,18.5 C2,18.2238576 2.22385763,18 2.5,18 Z" id="Rectangle-33-Copy-3" fill="#444444"></path>
+    </g>
+</svg>

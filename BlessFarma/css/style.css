@@ -1,0 +1,290 @@
+﻿#login {
+    position:fixed;
+    top: 50%;
+    left: 50%;
+    width:30em;
+    height:18em;
+    margin-top: -9em; /*set to a negative number 1/2 of your height*/
+    margin-left: -15em; /*set to a negative number 1/2 of your width*/
+    border: 1px solid #ccc;
+    background-color: #f3f3f3;
+
+}
+
+.gridHeadMouseOver {
+    background-color: #ccc;
+    font-family: Arial;
+    font-size: 11px;
+    cursor: pointer;
+    font-weight:500;
+}
+
+.gridItem {
+    background-color: #ffffff;
+    cursor: pointer;
+    font-family: Arial;
+    font-size: 11px;
+}
+
+/***/
+
+
+
+.panel {
+        border: 0px solid transparent !important;
+        
+}
+
+a:focus, a:hover {
+    color: #6E6E6E !important;
+    text-decoration:none !important;
+}
+
+.panel-body {
+    padding: 0px;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom:0px;
+    padding-left: 0;
+}
+
+header-row-grid{
+    text-align: center;
+}
+
+
+.panel-group {
+     margin-bottom: 0px;
+}
+
+.panel-default>.panel-heading {
+    color: #fff;
+    background-color: #000000;
+    border-color: #000;
+}
+
+#ContentPlaceHolder1_CrystalReportViewer1__UI_mb, #ContentPlaceHolder1_CrystalReportViewer1__UI_bc{
+    max-height:300px !important;
+
+}
+
+
+html, body {
+        height: 100%;
+        margin: 0px;
+    }
+.container {
+    height: 100%;
+    width:100%;
+    background: #f4f4f4;
+}
+
+
+/* make sidebar nav vertical */ 
+@media (min-width: 768px) {
+
+
+  .sidebar-nav .navbar .navbar-collapse {
+    padding: 0;
+    max-height: none;
+  }
+  .sidebar-nav .navbar ul {
+    float: none;
+  }
+  .sidebar-nav .navbar ul:not {
+    display: block;
+  }
+  .sidebar-nav .navbar li {
+    float: none;
+    display: block;
+  }
+  .sidebar-nav .navbar li a {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  #divMenu{
+    padding-right:0 !important;
+    padding-left:0 !important;
+    height:100%;
+    width:21%;
+    }
+
+    .navbar {
+        border-radius: 0px;
+        height:100%;
+    }
+}
+
+.navbar-default {
+  background-color: black;
+  border-color: #e7e7e7;
+}
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+  color: #FFF;
+  background-color: #616161;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+  color: #FFF;
+  background-color: #616161;
+}
+
+#divMenu{
+    padding-right:0 !important;
+    padding-left:0 !important;
+    height:100%;
+    
+}
+
+#divContainer{
+    padding-right:0 !important;
+    padding-left:0 !important;
+    margin-left: 25px;
+}
+
+.navbar {
+  position: relative;
+  min-height: 50px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+}
+
+.sidebar-nav {
+    height:100%;
+}
+
+.form-main{
+    height:100%;
+}
+#navbarDefault{
+    margin-bottom: 0px !important; 
+}
+.RadTabStrip_Windows7 .rtsLevel1 .rtsLink {
+    color: #000000 !important;
+}
+.RadTabStrip_Windows7 .rtsLevel1 {
+    background-color: #DEDDDD !important;
+}
+
+/****/
+.rsVerticalHeaderTable div
+{
+    line-height: 1px !important;
+}
+        
+.RadScheduler .rsVerticalHeaderWrapper div
+{
+    /*margin-left: -2px !important;*/
+}
+#RadScheduler1
+{
+    margin-left: -10px !important;
+}
+#Div1
+{
+    margin-left: -15px !important;
+}
+        
+.RadScheduler .rsVerticalHeaderWrapper div div
+{
+    margin-top: 0px !important;
+    height: 38px !important;
+    z-index: 1000;
+    overflow: visible !important;
+}
+        
+.rsAptResize
+{
+    display:none !important;
+}
+        
+.rsAptDelete
+{
+    display:none !important;
+}
+/****/
+#ContentPlaceHolder1_wucVuelosEdit1_wucRegistrarEstado1_UpdatePanelEstadoVuelos .row{
+     margin-right: 0 !important;
+     margin-left: 0 !important; 
+}
+
+.HeaderStyle{
+    text-align:center !important;
+}
+
+.HeaderStyle >th{
+    text-align:center !important;
+}
+
+
+.form-control  .validator{
+    visibility: visible; 
+    border: 0px; 
+    padding-left: 0px; 
+    color: red; 
+    font-weight: 800;
+}
+
+
+.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
+    background-color: #B90007;
+    border-color: #337ab7;
+}
+
+.message-preview:hover {
+    background-color:darkgray !important;
+}
+.message-footer:hover {
+    color: #fff !important;
+    background-color: #337ab7 !important;
+}
+
+.dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover {
+    color: #262626;
+    text-decoration: none;
+    background-color: #F5F5F5;
+}
+
+.Paggin table{
+	margin: 10px auto;
+}
+
+.Paggin span{
+    /* width: 120px !important; */
+    /* height: 80px; */
+    text-align: center;
+    padding: 0px 5px 0px 5px;
+    /* font-size: 23px; */
+    /* line-height: 1.42; */
+    border-radius: 100px;
+    background-color: #DC0812;
+    color: #FFF;
+    background-radius: 8px;
+    border: 10px solid transparent;
+    /* border-radius: 69%; */
+    margin: 0px 0px 0px 0px;
+}
+
+.Paggin a{
+    /* width: 120px !important; */
+    /* height: 80px; */
+    text-align: center;
+    padding: 0px 5px 0px 5px;
+    /* font-size: 23px; */
+    /* line-height: 1.42; */
+    border-radius: 100px;
+    background-color: #B3B2B2;
+    color: #FFF;
+    background-radius: 8px;
+    border: 10px solid transparent;
+    /* border-radius: 69%; */
+    margin: 0px 20px 0px 0px;
+}
+
+.message-preview {
+    padding: 10px;
+    border: 1px solid #AFAAAA;
+    margin: 5px;
+    background: #fff;
+}

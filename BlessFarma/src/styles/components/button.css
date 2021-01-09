@@ -1,0 +1,20 @@
+.ely-button-container {
+    display: inline-block;
+}
+
+.ely-button {
+    background-color: var(--color-gray-light);
+    cursor: pointer;
+    height: fit-content;
+    position: relative;
+    width: fit-content;
+}
+
+.ely-button .text {
+    padding: 8px 16px;
+}
+
+.ely-button.selected,
+.ely-button:hover {
+    background-color: var(--color-gray);
+}

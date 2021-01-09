@@ -1,0 +1,51 @@
+.ely-dropdown-container {
+    display: inline-block;
+}
+
+.ely-dropdown {
+    background-color: var(--color-gray-light);
+    cursor: pointer;
+    height: fit-content;
+    position: relative;
+    width: fit-content;
+}
+
+.ely-dropdown .text {
+    padding: 8px 16px;
+}
+
+.ely-dropdown .text:after {
+    content: "\25BE";
+    margin-left: 5px;
+}
+
+.ely-dropdown ul {
+    background-color: #ffffff;
+    display: none;
+    left: 0;
+    margin: 0;
+    position: absolute;
+    top: auto;
+    z-index: 5;
+}
+
+.ely-dropdown:hover ul {
+    box-shadow: 1px 5px 16px rgba(0, 0, 0, .15);
+    display: block;
+}
+
+.ely-dropdown ul li {
+    display: block;
+    margin: 0;
+    padding: 8px 16px;
+    white-space: nowrap;
+}
+
+.ely-dropdown.selected,
+.ely-dropdown:hover {
+    background-color: var(--color-gray);
+}
+
+.ely-dropdown ul li:hover {
+    background-color: var(--color-gray-light);
+}

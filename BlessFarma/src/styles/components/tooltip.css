@@ -1,0 +1,120 @@
+:root {
+    --backgroundColor: rgba(0, 0, 0, .8);
+}
+
+.tooltip {
+    position: relative;
+}
+.tooltip:after {
+    background-color: var(--backgroundColor);
+    border-radius: 8px;
+    color: #ffffff;
+    content: attr(data-tooltip);
+    font-size: .9em;
+    font-weight: bold;
+    min-width: 80px;
+    opacity: 0;
+    padding: 8px;
+    position: absolute;
+    transition: .2s ease-in-out .25s;
+    visibility: hidden;
+    z-index: 2;
+}
+.tooltip:hover:after {
+    opacity: 1;
+    visibility: visible;
+}
+
+.tooltip-top:after {
+    bottom: 150%;
+    left: 0;
+}
+.tooltip-bottom:after {
+    left: 0;
+    top: 155%;
+}
+.tooltip-left:after {
+    min-width: 100px;
+    right: 130%;
+    top: 0;
+}
+.tooltip-right:after {
+    left: 130%;
+    min-width: 100px;
+    top: 0;
+}
+
+.tooltip-top:hover:after {
+    bottom: 120%;
+}
+.tooltip-bottom:hover:after {
+    top: 125%;
+}
+.tooltip-left:hover:after {
+    right: 110%;
+}
+.tooltip-right:hover:after {
+    left: 110%;
+}
+
+/* Tips of the tooltip */
+
+.tooltip-top:before,
+.tooltip-bottom:before,
+.tooltip-left:before,
+.tooltip-right:before {
+    border-color: rgba(0, 0, 0, 0);
+    border-style: solid;
+    border-width: 7px;
+    content: "";
+    display: block;
+    opacity: 0;
+    position: absolute;
+    transition: .2s ease-in-out .25s;
+    visibility: hidden;
+}
+.tooltip-top:hover:before,
+.tooltip-bottom:hover:before,
+.tooltip-left:hover:before,
+.tooltip-right:hover:before {
+    opacity: 1;
+    visibility: visible;
+}
+
+.tooltip-top:before {
+    border-top-color: var(--backgroundColor);
+    left: 50%;
+    top: -51%;
+    transform: translateX(-50%);
+}
+.tooltip-bottom:before {
+    border-bottom-color: var(--backgroundColor);
+    bottom: -56%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.tooltip-left:before {
+    border-left-color: var(--backgroundColor);
+    left: -31%;
+    top: 15%;
+}
+.tooltip-right:before {
+    border-right-color: var(--backgroundColor);
+    right: -31%;
+    top: 15%;
+}
+
+/* Tip final positions */
+
+.tooltip-top:hover:before {
+    top: -21%;
+}
+.tooltip-bottom:hover:before {
+    bottom: -26%;
+}
+.tooltip-left:hover:before {
+    left: -11%;
+}
+.tooltip-right:hover:before {
+    right: -11%;
+}
